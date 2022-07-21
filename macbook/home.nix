@@ -16,6 +16,13 @@
     ripgrep
     vagrant
   ];
+  home.sessionVariables = {
+    EDITOR = "nvim";    
+    VISUAL = "nvim";
+  };
+  home.sessionPath = [
+    
+  ];
 
   nix.enable = true;
 
@@ -56,5 +63,9 @@
       direnv-vim
     ];
     extraConfig = builtins.readFile ./neovim-settings.lua;
+  };
+
+  programs.starship = {
+    enable = true;
   };
 }

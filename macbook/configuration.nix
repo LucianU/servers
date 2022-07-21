@@ -1,10 +1,6 @@
-{ config, pkgs, ... }:
+{ pkgs, lib, ... }:
 
 {
-  imports = [
-    <home-manager/nix-darwin>
-  ];
-
   nix.binaryCaches = [
     "https://cache.nixos.org/"
   ];
@@ -34,14 +30,13 @@
 
   # Use a custom configuration.nix location.
   # $ darwin-rebuild switch -I darwin-config=<path/to/configuration.nix>
-  environment.darwinConfig = "$HOME/.config/nix/configuration.nix";
+  environment.darwinConfig = "$HOME/.config/nixpkgs/configuration.nix";
 
   environment.systemPackages =
     [ pkgs.kitty
       pkgs.vim
     ];
 
-  home-manager.useUserPackages = true;
   home-manager.users.lucian = import ./home.nix;
 
 

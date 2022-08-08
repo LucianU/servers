@@ -14,11 +14,8 @@
   outputs = { self, darwin, nixpkgs, home-manager, ... }@inputs:
     let
       inherit (darwin.lib) darwinSystem;
-      nixpkgsConfig = {
-       config = { allowUnfree = true; };
-      };
       homeManagerConfig = {
-	nixpkgs = nixpkgsConfig;
+	nixpkgs.config = { allowUnfree = true; };
 	home-manager.useGlobalPkgs = true;
 	home-manager.useUserPackages = true;
 	home-manager.users.lucian = import ./home.nix;  
@@ -26,7 +23,7 @@
     in
       {
         darwinConfigurations = {
-          lucian = darwinSystem {
+          "lucians-mbp" = darwinSystem {
             system = "aarch64-darwin";
             modules = [
               ./configuration.nix

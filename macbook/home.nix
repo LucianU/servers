@@ -19,12 +19,21 @@
   home.sessionVariables = {
     EDITOR = "nvim";    
     VISUAL = "nvim";
+    HOMEBREW_PREFIX = "/opt/homebrew";
+    HOMEBREW_CELLAR = "/opt/homebrew/Cellar";
+    HOMEBREW_REPOSITORY = "/opt/homebrew";
   };
   home.sessionPath = [
-    
+    "/nix/var/nix/profiles/default/bin"
+    "/opt/homebrew/bin"
   ];
 
   nix.enable = true;
+
+  programs.home-manager = {
+    enable = true;
+    path = "${config.home.homeDirectory}/.config/nixpkgs/home.nix";
+  };
 
   programs.zsh = {
     enable = true;
@@ -58,6 +67,8 @@
 
   programs.neovim = {
     enable = true;
+    viAlias = true;
+    vimAlias = true;
     plugins = with pkgs.vimPlugins; [
       vim-nix
       direnv-vim
@@ -66,6 +77,10 @@
   };
 
   programs.starship = {
+    enable = true;
+  };
+
+  programs.irssi = {
     enable = true;
   };
 }

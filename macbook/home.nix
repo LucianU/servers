@@ -25,6 +25,7 @@
   };
   home.sessionPath = [
     "/nix/var/nix/profiles/default/bin"
+    "$HOME/.nix-profile"
     "/opt/homebrew/bin"
   ];
 

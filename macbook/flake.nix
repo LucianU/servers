@@ -23,7 +23,7 @@
     in
       {
         darwinConfigurations = {
-          "lucians-mbp" = darwinSystem {
+          "Lucians-MacBook-Pro" = darwinSystem {
             system = "aarch64-darwin";
             modules = [
               ./configuration.nix

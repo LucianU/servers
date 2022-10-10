@@ -26,8 +26,8 @@
       HOMEBREW_REPOSITORY = "/opt/homebrew";
     };
     sessionPath = [
-      "/nix/var/nix/profiles/default/bin"
-      "$HOME/.nix-profile"
+      "/etc/profiles/per-user/lucian/bin"
+      "/run/current-system/sw/bin"
       "/opt/homebrew/bin"
     ];
   };

@@ -39,20 +39,24 @@
       enable = true;
       path = "${config.home.homeDirectory}/.config/nixpkgs/home.nix";
     };
+
     zsh = {
       enable = true;
       shellAliases = {
         ll = "ls -al";
       };
     };
+
     direnv = {
       enable = true;
       nix-direnv.enable = true;
     };
+
     htop = {
       enable = true;
       settings.show_program_path = true;
     };
+
     git = {
       enable = true;
       userName = "Lucian Ursu";
@@ -65,6 +69,7 @@
         };
       };
     };
+
     neovim = {
       enable = true;
       viAlias = true;
@@ -75,9 +80,11 @@
       ];
       extraConfig = "lua << EOF\n" + builtins.readFile ./neovim-settings.lua + "\nEOF";
     };
+
     starship = {
       enable = true;
     };
+
     irssi = {
       enable = true;
     };

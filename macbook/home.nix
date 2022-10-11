@@ -40,8 +40,9 @@
       path = "${config.home.homeDirectory}/.config/nixpkgs/home.nix";
     };
 
-    zsh = {
+    bash = {
       enable = true;
+      enableCompletion = true;
       shellAliases = {
         ll = "ls -al";
       };

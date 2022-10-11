@@ -73,7 +73,7 @@
         vim-nix
         direnv-vim
       ];
-      extraConfig = builtins.readFile ./neovim-settings.lua;
+      extraConfig = "lua << EOF\n" + builtins.readFile ./neovim-settings.lua + "\nEOF";
     };
     starship = {
       enable = true;

@@ -89,7 +89,7 @@
       enable = true;
       networks = {
         liberachat = {
-          nick = "bahamas";
+          nick = "elbear";
           server = {
             address = "irc.libera.chat";
             port = 6697;
@@ -102,6 +102,9 @@
             python.autoJoin = true;
           };
         };
+      };
+      aliases = {
+        ID = "msg nickserv identify";
       };
     };
   };

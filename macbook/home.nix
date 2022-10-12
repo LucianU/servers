@@ -87,6 +87,22 @@
 
     irssi = {
       enable = true;
+      networks = {
+        liberachat = {
+          nick = "bahamas";
+          server = {
+            address = "irc.libera.chat";
+            port = 6697;
+            autoConnect = true;
+            ssl.enable = true;
+          };
+          channels = {
+            haskell.autoJoin = true;
+            nixos.autoJoin = true;
+            python.autoJoin = true;
+          };
+        };
+      };
     };
   };
 }

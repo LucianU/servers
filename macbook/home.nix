@@ -19,7 +19,7 @@
     ];
 
     sessionVariables = {
-      EDITOR = "nvim";    
+      EDITOR = "nvim";
       VISUAL = "nvim";
       HOMEBREW_PREFIX = "/opt/homebrew";
       HOMEBREW_CELLAR = "/opt/homebrew/Cellar";
@@ -66,6 +66,11 @@
         options = {
           side-by-side = true;
           line-numbers = true;
+        };
+      };
+      extraConfig = {
+        init = {
+          defaultBranch = "main";
         };
       };
     };

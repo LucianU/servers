@@ -23,13 +23,14 @@
     extra-platforms = x86_64-darwin aarch64-darwin
   '';
 
+  programs.bash.enableCompletion = true;
+
   # Auto upgrade nix package and the daemon service.
   services.nix-daemon.enable = true;
 
   # Use a custom configuration.nix location.
   # $ darwin-rebuild switch -I darwin-config=<path/to/configuration.nix>
   environment.darwinConfig = "$HOME/.config/nixpkgs/configuration.nix";
-
   environment.systemPackages =
     [ pkgs.kitty
       pkgs.vim

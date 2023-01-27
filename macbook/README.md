@@ -6,3 +6,10 @@ It will cover as much as possible tasks such as:
 * managing programs
 * managing services
 * managing dotfiles
+
+# Usage
+To deploy the current configuration on the machine, run:
+
+    darwin-rebuild switch --flake #.<machine>
+
+Where `<machine>` is the name of the machine as defined in `flake.nix`.

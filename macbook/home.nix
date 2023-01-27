@@ -16,6 +16,7 @@
       git
       ripgrep
       vagrant
+      nodePackages.npm
     ];
 
     sessionVariables = {

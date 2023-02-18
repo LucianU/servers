@@ -17,6 +17,10 @@
       ripgrep
       vagrant
       nodePackages.npm
+
+      # secrets
+      age
+      sops
     ];
 
     sessionVariables = {

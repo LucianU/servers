@@ -16,6 +16,7 @@
       git
       ripgrep
       vagrant
+      nodejs
       nodePackages.npm
 
       # secrets

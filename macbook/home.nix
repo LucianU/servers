@@ -19,6 +19,9 @@
       nodejs
       nodePackages.npm
 
+      # deployment
+      nixos-rebuild
+
       # secrets
       age
       sops

@@ -1,5 +1,5 @@
 {
-  #description = "Nix setup for M1 Macbook Pro";
+  description = "Nix setup for M1 Macbook Pro";
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-22.05-darwin";
@@ -18,7 +18,7 @@
 	nixpkgs.config = { allowUnfree = true; };
 	home-manager.useGlobalPkgs = true;
 	home-manager.useUserPackages = true;
-	home-manager.users.lucian = import ./home.nix;  
+	home-manager.users.lucian = import ./home.nix;
       };
     in
       {
@@ -28,7 +28,7 @@
             modules = [
               ./configuration.nix
               home-manager.darwinModules.home-manager
-       	      homeManagerConfig       
+       	      homeManagerConfig
             ];
           };
         };

@@ -16,6 +16,7 @@
       git
       ripgrep
       vagrant
+      terraform
 
       # deployment
       nixos-rebuild

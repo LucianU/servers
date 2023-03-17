@@ -16,8 +16,6 @@
       git
       ripgrep
       vagrant
-      nodejs
-      nodePackages.npm
 
       # deployment
       nixos-rebuild

@@ -15,6 +15,8 @@
       cachix
       git
       ripgrep
+
+      docker
       vagrant
       terraform
 

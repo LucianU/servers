@@ -16,6 +16,7 @@
       git
       ripgrep
 
+      colima # Docker runtime
       docker
       vagrant
       terraform

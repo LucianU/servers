@@ -7,10 +7,10 @@
 
     age-keys.url = "/Users/lucian/.config/sops/age";
 
-		knowledge-store.url = "/Users/lucian/code/knowledge-store";
+    knowledge-store.url = "/Users/lucian/code/web/knowledge-store";
     knowledge-store.inputs.nixpkgs.follows = "nixpkgs";
 
-    wikis.url = "/Users/lucian/code/wikis";
+    wikis.url = "/Users/lucian/code/web/wikis";
     wikis.inputs.nixpkgs.follows = "nixpkgs";
   };
 

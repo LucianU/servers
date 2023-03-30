@@ -1,6 +1,10 @@
 { config, pkgs, lib, ... }:
 
 {
+  imports = [
+    ./modules/home-manager/nvim/plugins/copilot-vim
+  ];
+
   home = {
     stateVersion = "22.05";
 

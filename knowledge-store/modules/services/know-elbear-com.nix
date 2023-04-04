@@ -28,7 +28,7 @@ in {
     listenOptions = mkOption {
       type = types.attrs;
       default = {
-        credentials="${cfg.package}/users.csv";
+        credentials="${cfg.package}/wiki/users.csv";
         readers="(authenticated)";
         writers="(authenticated)";
       };

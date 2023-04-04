@@ -19,7 +19,7 @@
       "knowledge-store" = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [
-          ./new-knowledge-store/configuration.nix
+          ./knowledge-store/configuration.nix
           sops-nix.nixosModules.sops
         ];
         specialArgs = { inherit inputs; };

@@ -15,7 +15,10 @@
     let
       inherit (darwin.lib) darwinSystem;
       homeManagerConfig = {
-        nixpkgs.config = { allowUnfree = true; };
+        nixpkgs.config = {
+          allowUnfree = true; 
+          allowBroken = true;
+        };
         home-manager.useGlobalPkgs = true;
         home-manager.useUserPackages = true;
         home-manager.users.lucian = import ./home.nix;

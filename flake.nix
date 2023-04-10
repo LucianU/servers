@@ -24,6 +24,23 @@
         ];
         specialArgs = { inherit inputs; };
       };
+
+      "hetzner-main" = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        modules = [
+          ./hetzner-main/configuration.nix
+          sops-nix.nixosModules.sops
+        ];
+        specialArgs = { inherit inputs; };
+      };
+
+      "do-nixos-stage" = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        modules = [
+          ./do-nixos-stage/configuration.nix
+        ];
+        specialArgs = { inherit inputs; };
+      };
     };
   };
 }

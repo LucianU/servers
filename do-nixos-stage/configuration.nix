@@ -1,5 +1,9 @@
-{ modulesPath, lib, ... }:
+{ config, pkgs, lib, inputs, ... }:
 {
+  imports = [
+    ../services/tiddlywiki-staging.nix
+  ];
+
   boot = {
     growPartition = true;
     kernelParams = [ "console=ttyS0" "panic=1" "boot.panic_on_fail" ];
@@ -22,6 +26,7 @@
 
   networking = {
     hostName = "do-nixos-stage";
+    firewall.allowedTCPPorts = [ 80 443 ];
   };
 
   users = {
@@ -37,14 +42,21 @@
     defaults.email = "lucian.ursu@gmail.com";
   };
 
-  services = {
-    openssh = {
-      enable = true;
+  sops = {
+    defaultSopsFile = ../secrets/do-nixos-stage.yaml;
+    age.sshKeyPaths = [ "/etc/ssh/ssh_host_ed25519_key" ];
+    secrets = {
+      restic_pass = {};
+      digitalocean_spaces_credentials = {};
     };
+  };
 
+  services = {
+	openssh.enable = true;
     do-agent.enable = true;
   };
 
   nixpkgs.system = "x86_64-linux";
   system.stateVersion = "22.11";
+  documentation.nixos.enable = false;
 }

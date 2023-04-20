@@ -1,20 +1,5 @@
 {
   "nodes": {
-    "age-keys": {
-      "inputs": {
-        "nixpkgs": "nixpkgs"
-      },
-      "locked": {
-        "lastModified": 1677493953,
-        "narHash": "sha256-44A4XWMXDwPnqfxHrF1JZE689VaKhbPGfEVfMx85hSQ=",
-        "path": "/Users/lucian/.config/sops/age",
-        "type": "path"
-      },
-      "original": {
-        "path": "/Users/lucian/.config/sops/age",
-        "type": "path"
-      }
-    },
     "knowledge-store": {
       "inputs": {
         "nixpkgs": [
@@ -67,27 +52,10 @@
         "type": "github"
       }
     },
-    "nixpkgs_2": {
-      "locked": {
-        "lastModified": 1669833724,
-        "narHash": "sha256-/HEZNyGbnQecrgJnfE8d0WC5c1xuPSD2LUpB6YXlg4c=",
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "4d2b37a84fad1091b9de401eb450aae66f1a741e",
-        "type": "github"
-      },
-      "original": {
-        "owner": "NixOS",
-        "ref": "22.11",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
     "root": {
       "inputs": {
-        "age-keys": "age-keys",
         "knowledge-store": "knowledge-store",
-        "nixpkgs": "nixpkgs_2",
+        "nixpkgs": "nixpkgs",
         "sops-nix": "sops-nix",
         "wikis": "wikis"
       }

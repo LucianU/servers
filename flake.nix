@@ -36,6 +36,7 @@
         system = "x86_64-linux";
         modules = [
           ./do-nixos-stage/configuration.nix
+          sops-nix.nixosModules.sops
         ];
         specialArgs = { inherit inputs; };
       };

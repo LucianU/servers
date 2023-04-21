@@ -59,7 +59,7 @@
     bash = {
       enable = true;
       shellAliases = {
-        ll = "ls -al";
+        ll = "ls -alGh --group-directories-first --color=auto";
       };
     };
 

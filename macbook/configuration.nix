@@ -15,7 +15,7 @@
     { hostName = "hetzner-main";
       system = "x86_64-linux";
       maxJobs = 100;
-      supportedFeatures = [ "benchmark" "big-parallel" ];
+      supportedFeatures = [ "benchmark" "big-parallel" "kvm" "nixos-test" ];
     }
   ];
 

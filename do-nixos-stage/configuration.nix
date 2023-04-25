@@ -52,7 +52,7 @@
   };
 
   services = {
-	openssh.enable = true;
+    openssh.enable = true;
     do-agent.enable = true;
   };
 

@@ -1,7 +1,0 @@
-keys:
-  - &lucian age127p354uhmd7x24gdkvgtn9y9cczhc9xt7ngvetufyw6h58wmfp7q6aluex
-creation_rules:
-  - path_regex: secrets/[^/]+\.yaml$
-    key_groups:
-      - age:
-        - *lucian

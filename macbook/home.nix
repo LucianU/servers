@@ -22,6 +22,7 @@
 
       colima # Docker runtime
       docker
+      docker-compose
       vagrant
       terraform
 

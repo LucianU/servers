@@ -98,6 +98,9 @@
       plugins = with pkgs.vimPlugins; [
         vim-nix
         direnv-vim
+        editorconfig-nvim
+        vim-terraform
+        vim-terraform-completion
       ];
       extraConfig = "lua << EOF\n" + builtins.readFile ./neovim-settings.lua + "\nEOF";
     };

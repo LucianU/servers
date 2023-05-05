@@ -56,7 +56,7 @@ in {
     systemd = {
       tmpfiles.rules = [
         "d ${cfg.dataDir} 0755 root root - -"
-        "L ${cfg.dataDir}/tiddlywiki.info - - - - ${cfg.package}/tiddlywiki.info"
+        "L ${cfg.dataDir}/tiddlywiki.info - - - - ${cfg.package}/wiki/tiddlywiki.info"
       ];
 
       services.tw-knowledge-store = {

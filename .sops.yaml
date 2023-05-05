@@ -16,3 +16,8 @@ creation_rules:
       - age:
         - *user_lucian
         - *server_hetzner_main
+  - path_regex: secrets/oci-main.yaml$
+    key_groups:
+      - age:
+        - *user_lucian
+        - *server_oci_main

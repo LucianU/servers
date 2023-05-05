@@ -60,7 +60,7 @@
       };
 
       "oci-arm-main" = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
+        system = "aarch64-linux";
         modules = [
           ./machines/oci-arm-main/configuration.nix
           sops-nix.nixosModules.sops

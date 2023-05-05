@@ -1,7 +1,7 @@
 { config, pkgs, lib, inputs, ... }:
 {
   imports = [
-    ../services/tiddlywiki-staging.nix
+    ../../modules/tw-knowledge-store-v2.nix
   ];
 
   boot = {
@@ -43,7 +43,7 @@
   };
 
   sops = {
-    defaultSopsFile = ../secrets/do-nixos-stage.yaml;
+    defaultSopsFile = ../../secrets/do-nixos-stage.yaml;
     age.sshKeyPaths = [ "/etc/ssh/ssh_host_ed25519_key" ];
     secrets = {
       restic_pass = {};
@@ -54,6 +54,15 @@
   services = {
     openssh.enable = true;
     do-agent.enable = true;
+
+    tw-knowledge-store-v2 = {
+      enable = true;
+      port = 8080;
+      domainName = "know.staging.elbear.com";
+      backupRepo = "s3:fra1.digitaloceanspaces.com/stage-elbear-com";
+      backupPasswordFile = config.sops.secrets.restic_pass.path;
+      backupCloudCredentialsFile = config.sops.secrets.digitalocean_spaces_credentials.path;
+    };
   };
 
   nixpkgs.system = "x86_64-linux";

@@ -14,15 +14,6 @@
 
   outputs = inputs@{ nixpkgs, sops-nix, ... }: {
     nixosConfigurations = {
-      "knowledge-store" = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-        modules = [
-          ./knowledge-store/configuration.nix
-          sops-nix.nixosModules.sops
-        ];
-        specialArgs = { inherit inputs; };
-      };
-
       "hetzner-main" = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [

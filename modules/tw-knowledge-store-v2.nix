@@ -6,6 +6,7 @@ let
   cfg = config.services.tw-knowledge-store-v2;
   knowledge-store-pkg = inputs.knowledge-store;
   description = "Knowledge Store - TiddlyWiki Instance";
+  service-name = "tw-knowledge-store-v2";
 in {
 
   options.services.tw-knowledge-store-v2 = {
@@ -26,7 +27,7 @@ in {
 
     dataDir = mkOption {
       type = types.path;
-      default = "/var/lib/knowledge-store-v2";
+      default = "/var/lib/${service-name}";
       description = "The directory where the TiddlyWiki instance will be stored.";
     };
 
@@ -58,7 +59,7 @@ in {
       type = types.attrs;
 
       default = {
-        credentials="${cfg.package}/wiki/users.csv";
+        credentials="${cfg.dataDir}/users.csv";
         readers="(authenticated)";
         writers="(authenticated)";
       };
@@ -82,12 +83,29 @@ in {
       tmpfiles.rules = [
         "d ${cfg.dataDir} 0755 root root - -"
         "L ${cfg.dataDir}/tiddlywiki.info - - - - ${cfg.package}/wiki/tiddlywiki.info"
+        "L ${cfg.dataDir}/users.csv - - - - ${cfg.package}/wiki/users.csv"
       ];
 
       services.tw-knowledge-store-v2 =
       let
-        listenParams = concatStrings (mapAttrsToList (n: v: " '${n}=${toString v}' ") cfg.listenOptions);
+        restic-for-service = pkgs.writeShellScript "restic-${service-name}" ''
+          source ${cfg.backupCloudCredentialsFile}
+
+          ${pkgs.restic}/bin/restic -r ${cfg.backupRepo} -p ${cfg.backupPasswordFile} "$@"
+        '';
+        restore-data = pkgs.writeShellScript "restore-data-for-${service-name}.sh" ''
+          set -euo pipefail
+
+          if [ ! -d "${cfg.dataDir}/tiddlers" ]; then
+            ${restic-for-service} restore latest --target /tmp/${service-name}-backup/
+
+            TIDDLERS_FULL_PATH="$(find /tmp/${service-name}-backup/ -type d -name tiddlers)"
+
+            mv "$TIDDLERS_FULL_PATH" "${cfg.dataDir}/tiddlers"
+          fi
+        '';
         tiddlywiki = "${pkgs.nodePackages.tiddlywiki}/lib/node_modules/.bin/tiddlywiki";
+        listenParams = concatStrings (mapAttrsToList (n: v: " '${n}=${toString v}' ") cfg.listenOptions);
       in
         {
           description = description;
@@ -97,6 +115,7 @@ in {
             Type = "simple";
             Restart = "on-failure";
             User = "root";
+            ExecStartPre = restore-data;
             ExecStart = "${tiddlywiki} ${cfg.dataDir} --listen port=${toString(cfg.port)} ${listenParams}";
           };
         };

@@ -2,6 +2,7 @@
   imports = [
     ./hardware-configuration.nix
     ../../modules/tw-knowledge-store-v2.nix
+    ../../modules/tw-haskell-v2.nix
   ];
 
   boot.cleanTmpDir = true;
@@ -30,8 +31,11 @@
     defaultSopsFile = ../../secrets/oci-main.yaml;
     age.sshKeyPaths = [ "/etc/ssh/ssh_host_ed25519_key" ];
     secrets = {
-      restic_pass = {};
+      tw_knowledge_store_v2_restic_pass = {};
+      tw_haskell_v2_restic_pass = {};
       digitalocean_spaces_credentials = {};
+      digitalocean_spaces_access_key = {};
+      digitalocean_spaces_access_secret = {};
     };
   };
 
@@ -42,9 +46,18 @@
       enable = true;
       port = 8080;
       domainName = "know.elbear.com";
-      backupRepo = "s3:fra1.digitaloceanspaces.com/know-elbear-com";
-      backupPasswordFile = config.sops.secrets.restic_pass.path;
       backupCloudCredentialsFile = config.sops.secrets.digitalocean_spaces_credentials.path;
+      backupRepo = "s3:fra1.digitaloceanspaces.com/know-elbear-com";
+      backupPasswordFile = config.sops.secrets.tw_knowledge_store_v2_restic_pass.path;
+    };
+
+    tw-haskell-v2 = {
+      enable = true;
+      port = 8081;
+      domainName = "haskell.elbear.com";
+      backupCloudCredentialsFile = config.sops.secrets.digitalocean_spaces_credentials.path;
+      backupRepo = "s3:fra1.digitaloceanspaces.com/haskell-elbear-com";
+      backupPasswordFile = config.sops.secrets.tw_haskell_v2_restic_pass.path;
     };
   };
 

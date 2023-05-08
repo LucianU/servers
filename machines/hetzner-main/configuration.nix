@@ -46,10 +46,7 @@
     defaultSopsFile = ../secrets/hetzner-main.yaml;
     age.sshKeyPaths = [ "/etc/ssh/ssh_host_ed25519_key" ];
 
-    secrets = {
-      restic_pass = {};
-      digitalocean_spaces_credentials = {};
-    };
+    secrets = { };
   };
 
   services = {

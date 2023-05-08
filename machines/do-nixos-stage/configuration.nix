@@ -46,7 +46,7 @@
     defaultSopsFile = ../../secrets/do-nixos-stage.yaml;
     age.sshKeyPaths = [ "/etc/ssh/ssh_host_ed25519_key" ];
     secrets = {
-      restic_pass = {};
+      tw_knowledge_store_v2_restic_pass = {};
       digitalocean_spaces_credentials = {};
     };
   };
@@ -60,7 +60,7 @@
       port = 8080;
       domainName = "know.staging.elbear.com";
       backupRepo = "s3:fra1.digitaloceanspaces.com/stage-elbear-com";
-      backupPasswordFile = config.sops.secrets.restic_pass.path;
+      backupPasswordFile = config.sops.secrets.tw_knowledge_store_v2_restic_pass.path;
       backupCloudCredentialsFile = config.sops.secrets.digitalocean_spaces_credentials.path;
     };
   };

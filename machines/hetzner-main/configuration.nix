@@ -1,5 +1,10 @@
 { config, pkgs, lib, inputs, ... }:
 {
+  imports = [
+    ../../modules/tw-knowledge-store-v2.nix
+    ../../modules/tw-haskell-v2.nix
+  ];
+
   boot = {
     cleanTmpDir = true;
 
@@ -43,14 +48,36 @@
   };
 
   sops = {
-    defaultSopsFile = ../secrets/hetzner-main.yaml;
+    defaultSopsFile = ../../secrets/hetzner-main.yaml;
     age.sshKeyPaths = [ "/etc/ssh/ssh_host_ed25519_key" ];
+    secrets = {
+      tw_knowledge_store_v2_restic_pass = {};
+      tw_haskell_v2_restic_pass = {};
 
-    secrets = { };
+      digitalocean_spaces_credentials = {};
+    };
   };
 
   services = {
     openssh.enable = true;
+
+    tw-knowledge-store-v2 = {
+      enable = true;
+      port = 8080;
+      domainName = "know.elbear.com";
+      backupCloudCredentialsFile = config.sops.secrets.digitalocean_spaces_credentials.path;
+      backupRepo = "s3:fra1.digitaloceanspaces.com/know-elbear-com";
+      backupPasswordFile = config.sops.secrets.tw_knowledge_store_v2_restic_pass.path;
+    };
+
+    tw-haskell-v2 = {
+      enable = true;
+      port = 8081;
+      domainName = "haskell.elbear.com";
+      backupCloudCredentialsFile = config.sops.secrets.digitalocean_spaces_credentials.path;
+      backupRepo = "s3:fra1.digitaloceanspaces.com/haskell-elbear-com";
+      backupPasswordFile = config.sops.secrets.tw_haskell_v2_restic_pass.path;
+    };
   };
 
   nixpkgs.system = "x86_64-linux";

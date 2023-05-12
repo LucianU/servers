@@ -34,8 +34,6 @@
       tw_knowledge_store_v2_restic_pass = {};
       tw_haskell_v2_restic_pass = {};
       digitalocean_spaces_credentials = {};
-      digitalocean_spaces_access_key = {};
-      digitalocean_spaces_access_secret = {};
     };
   };
 

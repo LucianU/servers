@@ -101,6 +101,9 @@
         editorconfig-nvim
         vim-terraform
         vim-terraform-completion
+        nerdtree
+        fzf-vim
+        fzf-lsp-nvim
       ];
       extraConfig = "lua << EOF\n" + builtins.readFile ./neovim-settings.lua + "\nEOF";
     };

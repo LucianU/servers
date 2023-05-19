@@ -23,3 +23,5 @@ end
 
 -- strip all files by default
 vim.cmd("autocmd BufWritePre * :lua vim.fn.stripTrailingWhitespace()")
+
+vim.cmd("colorscheme tokyonight")

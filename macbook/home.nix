@@ -19,6 +19,7 @@
       cachix
       git
       ripgrep
+      colordiff
 
       colima # Docker runtime
       docker

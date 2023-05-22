@@ -1,6 +1,6 @@
 keys:
   - &user_lucian age127p354uhmd7x24gdkvgtn9y9cczhc9xt7ngvetufyw6h58wmfp7q6aluex
-  - &server_do_nixos_stage age19dq2g5ah84t5zp2kmte9jner4t502u6fwg60s37k2zj0ck0n4upqtmdfqt
+  - &server_do_nixos_stage age1zj0skqgafz7hsf56eske6ygmdc88e9zl6agcegfhe7vknvudevkqx94jmr
   - &server_hetzner_main age17n0d7pl65p326rkpgw8sc7sap56ntjsc49racqw83jkjwdkyvsqsa02rrj
   - &server_oci_main age1jjurzcexjrn4q5q682g3jr5pedctkjwr0lq2g4wa9xktrpy77srqt6wh8v
   - &server_oci_snd age1exseaaak6z66g6u4mfwadyejevcz0d7h7ayvxtvq4aekznrf8e9s0c408x

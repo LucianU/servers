@@ -20,6 +20,7 @@
       git
       ripgrep
       colordiff
+      bat
 
       colima # Docker runtime
       docker

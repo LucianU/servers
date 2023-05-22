@@ -107,6 +107,7 @@
         nerdtree
         fzf-vim
         fzf-lsp-nvim
+        ultisnips
 
         tokyonight-nvim # theme
       ];

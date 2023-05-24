@@ -108,8 +108,8 @@ in
     config_systemd = {
       tmpfiles.rules = [
         "d ${cfg.dataDir} 0755 root root - -"
-        "L ${cfg.dataDir}/tiddlywiki.info - - - - ${cfg.package}/wiki/tiddlywiki.info"
-        "L ${cfg.dataDir}/users.csv - - - - ${cfg.package}/wiki/users.csv"
+        "L+ ${cfg.dataDir}/tiddlywiki.info - - - - ${cfg.package}/tiddlywiki.info"
+        "L+ ${cfg.dataDir}/users.csv - - - - ${cfg.package}/users.csv"
       ];
 
       services.tw-knowledge-store-v2 =

@@ -3,7 +3,7 @@
 with lib;
 
 let
-  knowledge-store-pkg = inputs.knowledge-store;
+  knowledge-store-pkg = inputs.knowledge-store.packages.${config.nixpkgs.system}.knowledge-store;
   description = "Knowledge Store - TiddlyWiki Instance";
   service-name = "tw-knowledge-store-v2";
   cfg = config.services.tw-knowledge-store-v2;

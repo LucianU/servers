@@ -1,11 +1,11 @@
 { config, pkgs, lib, inputs, ... }:
 {
   imports = [
-    ../../modules/tw-knowledge-store-v2.nix
-    ../../modules/tw-haskell-v2.nix
-    ../../modules/tw-rust-v2.nix
-    ../../modules/tw-sim.nix
+    ../../modules/tw-knowledge-store.nix
+    ../../modules/tw-haskell.nix
+    ../../modules/tw-rust.nix
     ../../modules/tw-publish.nix
+    ../../modules/tw-sim.nix
   ];
 
   boot = {
@@ -63,7 +63,7 @@
     openssh.enable = true;
     do-agent.enable = true;
 
-    tw-knowledge-store-v2 = {
+    tw-knowledge-store = {
       enable = true;
       port = 8080;
       domainName = "know.staging.elbear.com";
@@ -85,7 +85,7 @@
       };
     };
 
-    tw-haskell-v2 = {
+    tw-haskell = {
       enable = true;
       port = 8081;
       domainName = "haskell.staging.elbear.com";
@@ -107,7 +107,7 @@
       };
     };
 
-    tw-rust-v2 = {
+    tw-rust = {
       enable = true;
       port = 8082;
       domainName = "rust.staging.elbear.com";
@@ -126,6 +126,28 @@
           credentialsFile = config.sops.secrets.digitalocean_spaces_credentials.path;
         };
         passwordFile = config.sops.secrets.tw_rust_restic_pass.path;
+      };
+    };
+
+    tw-publish = {
+      enable = true;
+      port = 8084;
+      domainName = "publish.staging.elbear.com";
+
+      backup = {
+        backend = {
+          url = "s3:fra1.digitaloceanspaces.com/stage-elbear-com";
+          credentialsFile = config.sops.secrets.digitalocean_spaces_credentials.path;
+        };
+        passwordFile = config.sops.secrets.tw_stage_restic_pass.path;
+      };
+
+      restore = {
+        backend = {
+          url = "s3:fra1.digitaloceanspaces.com/stage-elbear-com";
+          credentialsFile = config.sops.secrets.digitalocean_spaces_credentials.path;
+        };
+        passwordFile = config.sops.secrets.tw_stage_restic_pass.path;
       };
     };
 
@@ -151,27 +173,6 @@
       };
     };
 
-    tw-publish = {
-      enable = true;
-      port = 8084;
-      domainName = "publish.staging.elbear.com";
-
-      backup = {
-        backend = {
-          url = "s3:fra1.digitaloceanspaces.com/stage-elbear-com";
-          credentialsFile = config.sops.secrets.digitalocean_spaces_credentials.path;
-        };
-        passwordFile = config.sops.secrets.tw_stage_restic_pass.path;
-      };
-
-      restore = {
-        backend = {
-          url = "s3:fra1.digitaloceanspaces.com/stage-elbear-com";
-          credentialsFile = config.sops.secrets.digitalocean_spaces_credentials.path;
-        };
-        passwordFile = config.sops.secrets.tw_stage_restic_pass.path;
-      };
-    };
   };
 
   nixpkgs.system = "x86_64-linux";

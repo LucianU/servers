@@ -1,12 +1,13 @@
 { config, lib, pkgs, inputs, ... }:
 
 let
-  tw-service = import ./tw-service.nix;
-  tw-publish-pkg = inputs.wikis.packages.${config.nixpkgs.system}.publish;
-  tw-publish = tw-service {
-    service-name = "tw-publish";
-    service-pkg = tw-publish-pkg;
-    inherit config lib pkgs;
-  };
+  mk-TW-Instance = import ./mk-tw-instance.nix;
 in
-  tw-publish
+  let
+    tw-publish-pkg = inputs.wikis.packages.${config.nixpkgs.system}.publish;
+  in
+    mk-TW-Instance {
+      service-name = "tw-publish";
+      service-pkg = tw-publish-pkg;
+      inherit config lib pkgs;
+    };

@@ -1,12 +1,13 @@
 { config, lib, pkgs, inputs, ... }:
 
 let
-  tw-service = import ./tw-service.nix;
-  tw-rust-pkg = inputs.wikis.packages.${config.nixpkgs.system}.rust;
-  tw-rust = tw-service {
-    service-name = "tw-rust";
-    service-pkg = tw-rust-pkg;
-    inherit config lib pkgs;
-  };
+  mk-TW-Instance = import ./mk-tw-instance.nix;
 in
-  tw-rust
+  let
+    tw-rust-pkg = inputs.wikis.packages.${config.nixpkgs.system}.rust;
+  in
+    mk-TW-Instance {
+      service-name = "tw-rust";
+      service-pkg = tw-rust-pkg;
+      inherit config lib pkgs;
+    };

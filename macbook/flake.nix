@@ -16,13 +16,14 @@
       inherit (darwin.lib) darwinSystem;
       homeManagerConfig = {
         nixpkgs.config = {
-          allowUnfree = true; 
+          allowUnfree = true;
           allowBroken = true;
         };
         home-manager.useGlobalPkgs = true;
         home-manager.useUserPackages = true;
         home-manager.users.lucian = import ./home.nix;
       };
+      pkgs = nixpkgs.legacyPackages."aarch64-darwin";
     in
       {
         darwinConfigurations = {
@@ -33,6 +34,11 @@
               home-manager.darwinModules.home-manager
        	      homeManagerConfig
             ];
+          };
+        };
+        devShells = {
+          "aarch64-darwin".default = pkgs.mkShell {
+            packages = [ pkgs.bashInteractive ];
           };
         };
       };

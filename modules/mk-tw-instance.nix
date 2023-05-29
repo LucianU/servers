@@ -125,13 +125,20 @@ in
               # without the explicit `export`, restic doesn't "see" the variables
               export AWS_ACCESS_KEY_ID AWS_SECRET_ACCESS_KEY
 
-              RESTIC_REPOSITORY="${repo}" \
-              RESTIC_PASSWORD_FILE=${passwordFile} \
-              ${pkgs.restic}/bin/restic restore latest --target /tmp/${service-name}-backup/
+              snapshots=$(RESTIC_REPOSITORY="${repo}" RESTIC_PASSWORD_FILE=${passwordFile} ${pkgs.restic}/bin/restic snapshots --quiet)
 
-              TIDDLERS_PATH="$(find /tmp/${service-name}-backup/ -type d -name tiddlers)"
+              if [[ -z "$snapshots" ]]; then
+                echo "No snapshots found. Exiting..."
+                exit 0
+              else
+                RESTIC_REPOSITORY="${repo}" \
+                RESTIC_PASSWORD_FILE=${passwordFile} \
+                ${pkgs.restic}/bin/restic restore latest --target /tmp/${service-name}-backup/
 
-              mv "$TIDDLERS_PATH" "${cfg.dataDir}/tiddlers"
+                TIDDLERS_PATH="$(find /tmp/${service-name}-backup/ -type d -name tiddlers)"
+
+                mv "$TIDDLERS_PATH" "${cfg.dataDir}/tiddlers"
+              fi
             fi
           '';
 

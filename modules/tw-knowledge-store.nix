@@ -10,4 +10,4 @@ in
       service-name = "tw-knowledge-store";
       service-pkg = tw-knowledge-store-pkg;
       inherit config lib pkgs;
-    };
+    }

@@ -10,4 +10,4 @@ in
       service-name = "tw-sim";
       service-pkg = tw-sim-pkg;
       inherit config lib pkgs;
-    };
+    }

@@ -10,4 +10,4 @@ in
       service-name = "tw-haskell";
       service-pkg = tw-haskell-pkg;
       inherit config lib pkgs;
-    };
+    }

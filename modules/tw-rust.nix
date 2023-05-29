@@ -10,4 +10,4 @@ in
       service-name = "tw-rust";
       service-pkg = tw-rust-pkg;
       inherit config lib pkgs;
-    };
+    }

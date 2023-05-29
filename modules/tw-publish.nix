@@ -10,4 +10,4 @@ in
       service-name = "tw-publish";
       service-pkg = tw-publish-pkg;
       inherit config lib pkgs;
-    };
+    }

@@ -21,6 +21,7 @@
       ripgrep
       colordiff
       bat
+      restic
 
       colima # Docker runtime
       docker

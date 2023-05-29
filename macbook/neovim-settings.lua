@@ -24,4 +24,15 @@ end
 -- strip all files by default
 vim.cmd("autocmd BufWritePre * :lua vim.fn.stripTrailingWhitespace()")
 
+
 vim.cmd("colorscheme tokyonight")
+
+
+-- configure nvim-tree-lua
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+
+vim.opt.termguicolors = true
+
+-- empty setup using defaults
+require("nvim-tree").setup()

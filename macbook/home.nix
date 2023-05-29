@@ -105,7 +105,7 @@
         vim-terraform
         vim-terraform-completion
 
-        nerdtree
+        nvim-tree-lua
         fzf-vim
         fzf-lsp-nvim
         ultisnips

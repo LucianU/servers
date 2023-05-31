@@ -36,7 +36,10 @@ let
       '';
 
       tiddlywiki = "${pkgs.nodePackages.tiddlywiki}/lib/node_modules/.bin/tiddlywiki";
-      listenParams = concatStrings (mapAttrsToList (n: v: " '${n}=${toString v}' ") cfg.listenOptions);
+      port = "port=${toString cfg.port}";
+      credentials = "credentials=${cfg.users}";
+      readers = "readers=${cfg.read_access}";
+      writers = "writers=${cfg.write_access}";
     in
       {
         description = service-description;
@@ -47,16 +50,15 @@ let
           Restart = "on-failure";
           User = "root";
           ExecStartPre = load-data-if-new-deploy;
-          ExecStart = "${tiddlywiki} ${cfg.dataDir} --listen port=${toString(cfg.port)} ${listenParams}";
+          ExecStart = "${tiddlywiki} ${cfg.dataDir} --listen ${port} ${credentials} ${readers} ${writers}";
         };
       };
 in
   {
-      tmpfiles.rules = [
-        "d ${cfg.dataDir} 0755 root root - -"
-        "L+ ${cfg.dataDir}/tiddlywiki.info - - - - ${cfg.package}/tiddlywiki.info"
-        "L+ ${cfg.dataDir}/users.csv - - - - ${cfg.package}/users.csv"
-      ];
+    tmpfiles.rules = [
+      "d ${cfg.dataDir} 0755 root root - -"
+      "L+ ${cfg.dataDir}/tiddlywiki.info - - - - ${cfg.package}/tiddlywiki.info"
+    ];
 
-      services.${service-name} = service_config;
+    services.${service-name} = service_config;
   }

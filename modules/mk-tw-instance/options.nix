@@ -73,36 +73,33 @@ let
     };
   };
 
+  users = mkOption {
+    type = types.path;
+    default = null;
+    description = "A file with users and their passwords in csv format.";
+  };
 
-  listenOptions = mkOption {
-    type = types.attrs;
+  read_access = mkOption {
+    type = types.enum [ "(anon)" "(authenticated)" ];
+    default = "(authenticated)";
+    description = "The type of read access to the TiddlyWiki instance.";
+  };
 
-    default = {
-      credentials="${cfg.dataDir}/users.csv";
-      readers="(authenticated)";
-      writers="(authenticated)";
-    };
-
-    example = {
-      credentials = "../credentials.csv";
-      readers="(anon)";
-      writers="(authenticated)";
-    };
-
-    description = ''
-      Parameters passed to <literal>--listen</literal> command.
-      Refer to <link xlink:href="https://tiddlywiki.com/#WebServer"/>
-      for details on supported values.
-    '';
+  write_access = mkOption {
+    type = types.enum [ "(anon)" "(authenticated)" ];
+    default = "(authenticated)";
+    description = "The type of write access to the TiddlyWiki instance.";
   };
 in
   {
     enable = enable;
     package = package;
     dataDir = dataDir;
-    port = port;
-    domainName = domainName;
     backup = backup;
     restore = restore;
-    listenOptions = listenOptions;
+    port = port;
+    domainName = domainName;
+    users = users;
+    read_access = read_access;
+    write_access = write_access;
   }

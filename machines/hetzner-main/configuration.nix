@@ -59,6 +59,8 @@
       tw_rust_restic_pass = {};
       tw_publish_restic_pass = {};
       tw_sim_restic_pass = {};
+      tw_prod_users = {};
+      tw_sim_users = {};
       digitalocean_spaces_credentials = {};
     };
   };
@@ -78,6 +80,10 @@
         };
         passwordFile = config.sops.secrets.tw_knowledge_store_restic_pass.path;
       };
+
+      users = config.sops.secrets.tw_prod_users.path;
+      read_access = "(authenticated)";
+      write_access = "(authenticated)";
     };
 
     tw-haskell = {
@@ -92,6 +98,10 @@
         };
         passwordFile = config.sops.secrets.tw_haskell_restic_pass.path;
       };
+
+      users = config.sops.secrets.tw_prod_users.path;
+      read_access = "(anon)";
+      write_access = "(authenticated)";
     };
 
     tw-rust = {
@@ -106,6 +116,10 @@
         };
         passwordFile = config.sops.secrets.tw_rust_restic_pass.path;
       };
+
+      users = config.sops.secrets.tw_prod_users.path;
+      read_access = "(anon)";
+      write_access = "(authenticated)";
     };
 
     tw-publish = {
@@ -120,6 +134,10 @@
         };
         passwordFile = config.sops.secrets.tw_publish_restic_pass.path;
       };
+
+      users = config.sops.secrets.tw_prod_users.path;
+      read_access = "(anon)";
+      write_access = "(authenticated)";
     };
 
     tw-sim = {
@@ -134,6 +152,10 @@
         };
         passwordFile = config.sops.secrets.tw_sim_restic_pass.path;
       };
+
+      users = config.sops.secrets.tw_sim_users.path;
+      read_access = "(authenticated)";
+      write_access = "(authenticated)";
     };
   };
 

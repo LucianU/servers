@@ -36,3 +36,4 @@ vim.opt.termguicolors = true
 
 -- empty setup using defaults
 require("nvim-tree").setup()
+vim.cmd("nnoremap <C-e> :NvimTreeToggle<CR>")

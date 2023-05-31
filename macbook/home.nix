@@ -99,13 +99,16 @@
       viAlias = true;
       vimAlias = true;
       plugins = with pkgs.vimPlugins; [
+        editorconfig-nvim
+
         vim-nix
         direnv-vim
-        editorconfig-nvim
         vim-terraform
         vim-terraform-completion
 
         nvim-tree-lua
+        bufferline-nvim
+
         fzf-vim
         fzf-lsp-nvim
         ultisnips

@@ -37,3 +37,6 @@ vim.cmd("nnoremap <C-e> :NvimTreeToggle<CR>")
 
 -- configure bufferline
 require("bufferline").setup()
+
+-- exit Terminal Mode with Escape
+vim.cmd("tnoremap <Esc> <C-\\><C-n>")

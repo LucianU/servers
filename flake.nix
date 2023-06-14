@@ -10,54 +10,75 @@
 
     wikis.url = "/Users/lucian/code/web/wikis";
     wikis.inputs.nixpkgs.follows = "nixpkgs";
+
+    darwin.url = "github:lnl7/nix-darwin/master";
+    darwin.inputs.nixpkgs.follows = "nixpkgs";
+
+    home-manager.url = "github:nix-community/home-manager/release-22.05";
+    home-manager.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = inputs@{ nixpkgs, sops-nix, ... }: {
-    nixosConfigurations = {
-      "hetzner-main" = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-        modules = [
-          ./machines/hetzner-main/configuration.nix
-          sops-nix.nixosModules.sops
-        ];
-        specialArgs = { inherit inputs; };
+  outputs = inputs@{ nixpkgs, sops-nix, darwin, home-manager, ... }:
+    let
+      inherit (nixpkgs.lib) nixosSystem;
+      inherit (darwin.lib) darwinSystem;
+    in
+    {
+      nixosConfigurations = {
+        "hetzner-main" = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          modules = [
+            ./machines/hetzner-main/configuration.nix
+            sops-nix.nixosModules.sops
+          ];
+          specialArgs = { inherit inputs; };
+        };
+
+        "do-nixos-stage" = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          modules = [
+            ./machines/do-nixos-stage/configuration.nix
+            sops-nix.nixosModules.sops
+          ];
+          specialArgs = { inherit inputs; };
+        };
+
+        "oci-main" = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          modules = [
+            ./machines/oci-main/configuration.nix
+            sops-nix.nixosModules.sops
+          ];
+          specialArgs = { inherit inputs; };
+        };
+
+        "oci-snd" = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          modules = [
+            ./machines/oci-snd/configuration.nix
+            sops-nix.nixosModules.sops
+          ];
+          specialArgs = { inherit inputs; };
+        };
+
+        "oci-arm-main" = nixpkgs.lib.nixosSystem {
+          system = "aarch64-linux";
+          modules = [
+            ./machines/oci-arm-main/configuration.nix
+            sops-nix.nixosModules.sops
+          ];
+          specialArgs = { inherit inputs; };
+        };
       };
 
-      "do-nixos-stage" = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-        modules = [
-          ./machines/do-nixos-stage/configuration.nix
-          sops-nix.nixosModules.sops
-        ];
-        specialArgs = { inherit inputs; };
-      };
-
-      "oci-main" = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-        modules = [
-          ./machines/oci-main/configuration.nix
-          sops-nix.nixosModules.sops
-        ];
-        specialArgs = { inherit inputs; };
-      };
-
-      "oci-snd" = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-        modules = [
-          ./machines/oci-snd/configuration.nix
-          sops-nix.nixosModules.sops
-        ];
-        specialArgs = { inherit inputs; };
-      };
-
-      "oci-arm-main" = nixpkgs.lib.nixosSystem {
-        system = "aarch64-linux";
-        modules = [
-          ./machines/oci-arm-main/configuration.nix
-          sops-nix.nixosModules.sops
-        ];
-        specialArgs = { inherit inputs; };
+      darwinConfigurations = {
+        "Lucians-MacBook-Pro" = darwinSystem {
+          system = "aarch64-darwin";
+          modules = [
+            ./machines/macbook-pro/configuration.nix
+            home-manager.darwinModules.home-manager
+          ];
+        };
       };
     };
-  };
 }

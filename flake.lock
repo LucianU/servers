@@ -42,26 +42,6 @@
         "type": "github"
       }
     },
-    "knowledge-store": {
-      "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1677684104,
-        "narHash": "sha256-7KZd8yxyuYLpzNe+GV1KY8T9ecreHu03fqSgQgEQSXg=",
-        "ref": "master",
-        "rev": "83b495ff207162b44012b079a66f80f2f5835680",
-        "revCount": 7,
-        "type": "git",
-        "url": "file:///Users/lucian/code/web/knowledge-store"
-      },
-      "original": {
-        "type": "git",
-        "url": "file:///Users/lucian/code/web/knowledge-store"
-      }
-    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1669833724,
@@ -98,7 +78,6 @@
       "inputs": {
         "darwin": "darwin",
         "home-manager": "home-manager",
-        "knowledge-store": "knowledge-store",
         "nixpkgs": "nixpkgs",
         "sops-nix": "sops-nix",
         "tiddlywiki": "tiddlywiki",
@@ -153,11 +132,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1677680149,
-        "narHash": "sha256-4+QASredC2GMV+G+DIWFoYS7y18jVxs0T4TwEb6JJZA=",
-        "ref": "main",
-        "rev": "734fd91892d1d4954144aa9d5e82daea5c695529",
-        "revCount": 5,
+        "lastModified": 1687269139,
+        "narHash": "sha256-nWuXf3EzfqtQIjb1v2Pzn5c/GK2OvMn0JpfbDqjjlCg=",
+        "ref": "refs/heads/main",
+        "rev": "49fc4f806ebcd7e4aa03c95baf2aa0a2af7d7c53",
+        "revCount": 9,
         "type": "git",
         "url": "file:///Users/lucian/code/web/wikis"
       },

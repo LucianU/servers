@@ -8,9 +8,6 @@
     tiddlywiki.url = "github:LucianU/nix-tiddlywiki";
     tiddlywiki.inputs.nixpkgs.follows = "nixpkgs";
 
-    knowledge-store.url = "/Users/lucian/code/web/knowledge-store";
-    knowledge-store.inputs.nixpkgs.follows = "nixpkgs";
-
     wikis.url = "/Users/lucian/code/web/wikis";
     wikis.inputs.nixpkgs.follows = "nixpkgs";
 

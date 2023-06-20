@@ -1,4 +1,4 @@
-{ service-name, service-description, cfg, lib, pkgs }:
+{ service-name, service-description, tiddlywiki-pkg, cfg, lib, pkgs }:
 
 with lib;
 
@@ -35,7 +35,8 @@ let
         fi
       '';
 
-      tiddlywiki = "${pkgs.nodePackages.tiddlywiki}/lib/node_modules/.bin/tiddlywiki";
+      tiddlywiki = "${tiddlywiki-pkg}/tiddlywiki.js";
+      #tiddlywiki = "${pkgs.nodePackages.tiddlywiki}/lib/node_modules/.bin/tiddlywiki";
       port = "port=${toString cfg.port}";
       credentials = "credentials=${cfg.users}";
       readers = "readers=${cfg.read_access}";

@@ -101,6 +101,7 @@
         "knowledge-store": "knowledge-store",
         "nixpkgs": "nixpkgs",
         "sops-nix": "sops-nix",
+        "tiddlywiki": "tiddlywiki",
         "wikis": "wikis"
       }
     },
@@ -122,6 +123,26 @@
       "original": {
         "owner": "Mic92",
         "repo": "sops-nix",
+        "type": "github"
+      }
+    },
+    "tiddlywiki": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1687258650,
+        "narHash": "sha256-MiseJlohplHeNzRDiVyZZ9losIaqOM2+SjQRZ/TJBAE=",
+        "owner": "LucianU",
+        "repo": "nix-tiddlywiki",
+        "rev": "05564772db1eb6e98a83b4a002e8bbabbbe3ffa8",
+        "type": "github"
+      },
+      "original": {
+        "owner": "LucianU",
+        "repo": "nix-tiddlywiki",
         "type": "github"
       }
     },

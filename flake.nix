@@ -5,6 +5,9 @@
     sops-nix.url = "github:Mic92/sops-nix";
     sops-nix.inputs.nixpkgs.follows = "nixpkgs";
 
+    tiddlywiki.url = "github:LucianU/nix-tiddlywiki";
+    tiddlywiki.inputs.nixpkgs.follows = "nixpkgs";
+
     knowledge-store.url = "/Users/lucian/code/web/knowledge-store";
     knowledge-store.inputs.nixpkgs.follows = "nixpkgs";
 

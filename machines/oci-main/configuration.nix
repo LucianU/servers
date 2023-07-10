@@ -1,17 +1,22 @@
-{ config, ... }: {
+{ config, pkgs, lib, inputs, ... }:
+{
   imports = [
     ./hardware-configuration.nix
-    ../../modules/tw-knowledge-store-v2.nix
-    ../../modules/tw-haskell-v2.nix
+    ../../modules/tw-knowledge-store.nix
+    ../../modules/tw-haskell.nix
+    ../../modules/tw-rust.nix
+    ../../modules/tw-publish.nix
+    ../../modules/tw-sim.nix
   ];
 
   boot.cleanTmpDir = true;
   zramSwap.enable = true;
 
-	networking = {
-		hostName = "oci-main";
-		firewall.allowedTCPPorts = [ 80 443 ];
-	};
+
+  networking = {
+    hostName = "oci-main";
+    firewall.allowedTCPPorts = [ 80 443 ];
+  };
 
   users = {
     users = {
@@ -20,7 +25,6 @@
       ];
     };
   };
-
 
   security.acme = {
     acceptTerms = true;
@@ -31,8 +35,12 @@
     defaultSopsFile = ../../secrets/oci-main.yaml;
     age.sshKeyPaths = [ "/etc/ssh/ssh_host_ed25519_key" ];
     secrets = {
-      tw_knowledge_store_v2_restic_pass = {};
-      tw_haskell_v2_restic_pass = {};
+      tw_stage_restic_pass = {};
+      tw_knowledge_store_restic_pass = {};
+      tw_haskell_restic_pass = {};
+      tw_rust_restic_pass = {};
+      tw_sim_restic_pass = {};
+      tw_stage_users = {};
       digitalocean_spaces_credentials = {};
     };
   };
@@ -40,26 +48,139 @@
   services = {
     openssh.enable = true;
 
-    tw-knowledge-store-v2 = {
+    tw-knowledge-store = {
       enable = true;
       port = 8080;
-      domainName = "know.elbear.com";
-      backupCloudCredentialsFile = config.sops.secrets.digitalocean_spaces_credentials.path;
-      backupRepo = "s3:fra1.digitaloceanspaces.com/know-elbear-com";
-      backupPasswordFile = config.sops.secrets.tw_knowledge_store_v2_restic_pass.path;
+      domainName = "know.staging.elbear.com";
+
+      backup = {
+        backend = {
+          url = "s3:fra1.digitaloceanspaces.com/stage-elbear-com";
+          credentialsFile = config.sops.secrets.digitalocean_spaces_credentials.path;
+        };
+        passwordFile = config.sops.secrets.tw_stage_restic_pass.path;
+      };
+
+      restore = {
+        backend = {
+          url = "s3:fra1.digitaloceanspaces.com/know-elbear-com";
+          credentialsFile = config.sops.secrets.digitalocean_spaces_credentials.path;
+        };
+        passwordFile = config.sops.secrets.tw_knowledge_store_restic_pass.path;
+      };
+
+      users = config.sops.secrets.tw_stage_users.path;
+      read_access = "(authenticated)";
+      write_access = "(authenticated)";
     };
 
-    tw-haskell-v2 = {
+    tw-haskell = {
       enable = true;
       port = 8081;
-      domainName = "haskell.elbear.com";
-      backupCloudCredentialsFile = config.sops.secrets.digitalocean_spaces_credentials.path;
-      backupRepo = "s3:fra1.digitaloceanspaces.com/haskell-elbear-com";
-      backupPasswordFile = config.sops.secrets.tw_haskell_v2_restic_pass.path;
+      domainName = "haskell.staging.elbear.com";
+
+      backup = {
+        backend = {
+          url = "s3:fra1.digitaloceanspaces.com/stage-elbear-com";
+          credentialsFile = config.sops.secrets.digitalocean_spaces_credentials.path;
+        };
+        passwordFile = config.sops.secrets.tw_stage_restic_pass.path;
+      };
+
+      restore = {
+        backend = {
+          url = "s3:fra1.digitaloceanspaces.com/haskell-elbear-com";
+          credentialsFile = config.sops.secrets.digitalocean_spaces_credentials.path;
+        };
+        passwordFile = config.sops.secrets.tw_haskell_restic_pass.path;
+      };
+
+      users = config.sops.secrets.tw_stage_users.path;
+      read_access = "(anon)";
+      write_access = "(authenticated)";
     };
+
+    tw-rust = {
+      enable = true;
+      port = 8082;
+      domainName = "rust.staging.elbear.com";
+
+      backup = {
+        backend = {
+          url = "s3:fra1.digitaloceanspaces.com/stage-elbear-com";
+          credentialsFile = config.sops.secrets.digitalocean_spaces_credentials.path;
+        };
+        passwordFile = config.sops.secrets.tw_stage_restic_pass.path;
+      };
+
+      restore = {
+        backend = {
+          url = "s3:fra1.digitaloceanspaces.com/rust-elbear-com";
+          credentialsFile = config.sops.secrets.digitalocean_spaces_credentials.path;
+        };
+        passwordFile = config.sops.secrets.tw_rust_restic_pass.path;
+      };
+
+      users = config.sops.secrets.tw_stage_users.path;
+      read_access = "(anon)";
+      write_access = "(authenticated)";
+    };
+
+    tw-publish = {
+      enable = true;
+      port = 8084;
+      domainName = "publish.staging.elbear.com";
+
+      backup = {
+        backend = {
+          url = "s3:fra1.digitaloceanspaces.com/stage-elbear-com";
+          credentialsFile = config.sops.secrets.digitalocean_spaces_credentials.path;
+        };
+        passwordFile = config.sops.secrets.tw_stage_restic_pass.path;
+      };
+
+      restore = {
+        backend = {
+          url = "s3:fra1.digitaloceanspaces.com/stage-elbear-com";
+          credentialsFile = config.sops.secrets.digitalocean_spaces_credentials.path;
+        };
+        passwordFile = config.sops.secrets.tw_stage_restic_pass.path;
+      };
+
+      users = config.sops.secrets.tw_stage_users.path;
+      read_access = "(anon)";
+      write_access = "(authenticated)";
+    };
+
+    tw-sim = {
+      enable = true;
+      port = 8083;
+      domainName = "sim.staging.elbear.com";
+
+      backup = {
+        backend = {
+          url = "s3:fra1.digitaloceanspaces.com/stage-elbear-com";
+          credentialsFile = config.sops.secrets.digitalocean_spaces_credentials.path;
+        };
+        passwordFile = config.sops.secrets.tw_stage_restic_pass.path;
+      };
+
+      restore = {
+        backend = {
+          url = "s3:fra1.digitaloceanspaces.com/sim-elbear-com";
+          credentialsFile = config.sops.secrets.digitalocean_spaces_credentials.path;
+        };
+        passwordFile = config.sops.secrets.tw_sim_restic_pass.path;
+      };
+
+      users = config.sops.secrets.tw_stage_users.path;
+      read_access = "(authenticated)";
+      write_access = "(authenticated)";
+    };
+
   };
 
-	nixpkgs.system = "x86_64-linux";
-	system.stateVersion = "23.05";
+  nixpkgs.system = "x86_64-linux";
+  system.stateVersion = "22.11";
   documentation.nixos.enable = false;
 }

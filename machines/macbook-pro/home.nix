@@ -89,15 +89,6 @@
         };
       };
 
-      includes = [
-        {
-          condition = "gitdir:~/code/clients/genesisda/**";
-          contents = {
-            user.email = "lucian.ursu@genesisda.com";
-          };
-        }
-      ];
-
       extraConfig = {
         init = {
           defaultBranch = "main";

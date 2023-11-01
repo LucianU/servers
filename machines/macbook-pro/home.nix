@@ -123,6 +123,9 @@
 
     starship = {
       enable = true;
+      settings = {
+        command_timeout = 1000;
+      };
     };
 
     irssi = {

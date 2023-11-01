@@ -2,7 +2,7 @@
 
 {
   imports = [
-    ./modules/home-manager/nvim/plugins/copilot-vim
+    ../../modules/nvim
   ];
 
   home = {
@@ -95,30 +95,6 @@
         };
         pull.rebase = false;
       };
-    };
-
-    neovim = {
-      enable = true;
-      viAlias = true;
-      vimAlias = true;
-      plugins = with pkgs.vimPlugins; [
-        editorconfig-nvim
-
-        vim-nix
-        direnv-vim
-        vim-terraform
-        vim-terraform-completion
-
-        nvim-tree-lua
-        bufferline-nvim
-
-        fzf-vim
-        fzf-lsp-nvim
-        ultisnips
-
-        tokyonight-nvim # theme
-      ];
-      extraConfig = "lua << EOF\n" + builtins.readFile ./neovim-settings.lua + "\nEOF";
     };
 
     starship = {

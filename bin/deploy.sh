@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -e
 
-usage="Usage: $0 {hetzner-main|oci-main|oci-snd|oci-arm-main|macbook-pro}"
+usage="Usage: $0 {hetzner-main|oci-main|oci-snd|oci-arm-main|mbp}"
 
 if [ "$#" -ne 1 ]; then
     echo "Error: This script requires exactly one argument."
@@ -20,7 +20,7 @@ case "$1" in
         unset TMPDIR
         ;;
 
-    macbook-pro)
+    mbp)
         darwin-rebuild switch --flake .#Lucians-MacBook-Pro
         ;;
     *)

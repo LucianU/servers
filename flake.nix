@@ -80,5 +80,14 @@
           ];
         };
       };
+
+      overlays.default = final: prev: {
+        vimPlugins = prev.vimPlugins.extend (final': prev': {
+          copilot-vim = import ./pkgs/copilot-vim {
+            fetchFromGitHub = prev.fetchFromGitHub;
+            buildVimPlugin = prev.vimUtils.buildVimPlugin;
+          };
+        });
+      };
     };
 }

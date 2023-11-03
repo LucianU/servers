@@ -18,9 +18,12 @@
 
     home-manager.url = "github:nix-community/home-manager/release-23.05";
     home-manager.inputs.nixpkgs.follows = "nixpkgs-latest";
+
+    nixos-wsl.url = "github:nix-community/nixos-wsl";
+    niwos-wsl.inputs.nixpkgs.follows = "nixpkgs-latest";
   };
 
-  outputs = inputs@{ nixpkgs, sops-nix, darwin, home-manager, ... }:
+  outputs = inputs@{ nixpkgs, sops-nix, darwin, home-manager, nixos-wsl, ... }:
     let
       inherit (nixpkgs.lib) nixosSystem;
       inherit (darwin.lib) darwinSystem;
@@ -68,6 +71,15 @@
           modules = [
             ./machines/oci-arm-main/configuration.nix
             sops-nix.nixosModules.sops
+          ];
+          specialArgs = { inherit inputs; };
+        };
+
+        "asus-rog" = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          modules = [
+            ./machines/asus-rog/configuration.nix
+            nixos-wsl.nixosModules.wsl
           ];
           specialArgs = { inherit inputs; };
         };

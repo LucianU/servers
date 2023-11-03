@@ -39,15 +39,6 @@
           specialArgs = { inherit inputs; };
         };
 
-        "do-nixos-stage" = nixpkgs.lib.nixosSystem {
-          system = "x86_64-linux";
-          modules = [
-            ./machines/do-nixos-stage/configuration.nix
-            sops-nix.nixosModules.sops
-          ];
-          specialArgs = { inherit inputs; };
-        };
-
         "oci-main" = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           modules = [

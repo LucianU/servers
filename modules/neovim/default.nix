@@ -22,6 +22,7 @@
 
         nvim-treesitter
         nvim-treesitter-parsers.haskell
+        nvim-treesitter-parsers.nix
 
         nvim-tree-lua
         bufferline-nvim

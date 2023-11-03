@@ -10,6 +10,7 @@
       enable = true;
       viAlias = true;
       vimAlias = true;
+
       plugins = with pkgs.vimPlugins; [
         editorconfig-nvim
 
@@ -19,6 +20,9 @@
         vim-terraform
         vim-terraform-completion
 
+        nvim-treesitter
+        nvim-treesitter-parsers.haskell
+
         nvim-tree-lua
         bufferline-nvim
 
@@ -26,11 +30,12 @@
         fzf-lsp-nvim
         ultisnips
 
+        plenary-nvim
+        telescope-nvim
+        haskell-tools-nvim
+
         # theme
         solarized
-
-        # paid services
-        # copilot-vim
       ];
       extraConfig = "lua << EOF\n" + builtins.readFile ./neovim-settings.lua + "\nEOF";
     };

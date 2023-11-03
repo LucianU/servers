@@ -18,11 +18,20 @@
       jq
       cachix
       git
+      fd
       ripgrep
       colordiff
       bat
       restic
       wireguard-tools
+
+      # Haskell tooling
+      haskell-language-server
+
+      haskellPackages.fast-tags
+      haskellPackages.hoogle
+      haskellPackages.haskell-debug-adapter
+      haskellPackages.ghci-dap
 
       colima # Docker runtime
       docker

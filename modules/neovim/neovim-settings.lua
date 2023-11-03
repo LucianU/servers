@@ -32,11 +32,26 @@ vim.cmd("colorscheme solarized")
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 vim.opt.termguicolors = true
+
 require("nvim-tree").setup()
 vim.cmd("nnoremap <C-e> :NvimTreeToggle<CR>")
 
 -- configure bufferline
 require("bufferline").setup()
+
+
+-- configure treesitter
+require("nvim-treesitter.configs").setup({
+    sync_install = false,
+
+    -- needed because Nix manages the parsers
+    auto_install = false,
+    ignore_install = { "all" },
+
+    highlight = {
+        enable = true,
+    },
+})
 
 -- exit Terminal Mode with Escape
 vim.cmd("tnoremap <Esc> <C-\\><C-n>")

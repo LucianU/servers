@@ -25,6 +25,8 @@
       restic
       wireguard-tools
 
+      nixd
+
       # Haskell tooling
       haskell-language-server
 

@@ -1,36 +1,38 @@
 {
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/22.11";
+    nixpkgs.url = "github:NixOS/nixpkgs/23.05";
 
-    nixpkgs-latest.url = "github:NixOS/nixpkgs/23.05";
+    nixpkgs-old.url = "github:NixOS/nixpkgs/22.11";
 
     sops-nix.url = "github:Mic92/sops-nix";
-    sops-nix.inputs.nixpkgs.follows = "nixpkgs";
+    sops-nix.inputs.nixpkgs.follows = "nixpkgs-old";
 
     tiddlywiki.url = "github:LucianU/nix-tiddlywiki";
-    tiddlywiki.inputs.nixpkgs.follows = "nixpkgs";
+    tiddlywiki.inputs.nixpkgs.follows = "nixpkgs-old";
 
     wikis.url = "/Users/lucian/code/web/wikis";
-    wikis.inputs.nixpkgs.follows = "nixpkgs";
+    wikis.inputs.nixpkgs.follows = "nixpkgs-old";
 
     darwin.url = "github:lnl7/nix-darwin/master";
-    darwin.inputs.nixpkgs.follows = "nixpkgs-latest";
+    darwin.inputs.nixpkgs.follows = "nixpkgs";
 
     home-manager.url = "github:nix-community/home-manager/release-23.05";
-    home-manager.inputs.nixpkgs.follows = "nixpkgs-latest";
+    home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
     nixos-wsl.url = "github:nix-community/nixos-wsl";
-    niwos-wsl.inputs.nixpkgs.follows = "nixpkgs-latest";
+    nixos-wsl.inputs.nixpkgs.follows = "nixpkgs";
+
+    nixd.url = "github:nix-community/nixd";
   };
 
-  outputs = inputs@{ nixpkgs, sops-nix, darwin, home-manager, nixos-wsl, ... }:
+  outputs = inputs@{ nixpkgs, nixpkgs-old, sops-nix, darwin, home-manager, nixos-wsl, nixd, ... }:
     let
-      inherit (nixpkgs.lib) nixosSystem;
+      inherit (nixpkgs-old.lib) nixosSystem;
       inherit (darwin.lib) darwinSystem;
     in
     {
       nixosConfigurations = {
-        "hetzner-main" = nixpkgs.lib.nixosSystem {
+        "hetzner-main" = nixosSystem {
           system = "x86_64-linux";
           modules = [
             ./machines/hetzner-main/configuration.nix
@@ -39,7 +41,7 @@
           specialArgs = { inherit inputs; };
         };
 
-        "oci-main" = nixpkgs.lib.nixosSystem {
+        "oci-main" = nixosSystem {
           system = "x86_64-linux";
           modules = [
             ./machines/oci-main/configuration.nix
@@ -48,7 +50,7 @@
           specialArgs = { inherit inputs; };
         };
 
-        "oci-snd" = nixpkgs.lib.nixosSystem {
+        "oci-snd" = nixosSystem {
           system = "x86_64-linux";
           modules = [
             ./machines/oci-snd/configuration.nix
@@ -57,7 +59,7 @@
           specialArgs = { inherit inputs; };
         };
 
-        "oci-arm-main" = nixpkgs.lib.nixosSystem {
+        "oci-arm-main" = nixosSystem {
           system = "aarch64-linux";
           modules = [
             ./machines/oci-arm-main/configuration.nix
@@ -66,7 +68,7 @@
           specialArgs = { inherit inputs; };
         };
 
-        "asus-rog" = nixpkgs.lib.nixosSystem {
+        "asus-rog" = nixosSystem {
           system = "x86_64-linux";
           modules = [
             ./machines/asus-rog/configuration.nix
@@ -76,13 +78,25 @@
         };
       };
 
-      darwinConfigurations = {
-        "Lucians-MacBook-Pro" = darwinSystem {
-          system = "aarch64-darwin";
-          modules = [
-            ./machines/macbook-pro/configuration.nix
-            home-manager.darwinModules.home-manager
-          ];
+      darwinConfigurations =
+        let
+          nixdOverlay = ({ config, pkgs, lib, ... }:
+            {
+              nixpkgs.overlays = [
+                (final: prev: {
+                  nixd = nixd.packages."aarch64-darwin".nixd;
+                })
+              ];
+            });
+        in
+        {
+          "Lucians-MacBook-Pro" = darwinSystem {
+            system = "aarch64-darwin";
+            modules = [
+              ./machines/macbook-pro/configuration.nix
+              home-manager.darwinModules.home-manager
+              nixdOverlay
+            ];
         };
       };
     };

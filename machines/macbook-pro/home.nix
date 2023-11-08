@@ -24,6 +24,7 @@
       bat
       restic
       wireguard-tools
+      eza
 
       nixd
 
@@ -74,7 +75,7 @@
     bash = {
       enable = true;
       shellAliases = {
-        ll = "ls -alGh --group-directories-first --color=auto";
+        ll = "eza -alh --group-directories-first --color=auto";
       };
     };
 

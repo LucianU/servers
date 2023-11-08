@@ -23,9 +23,11 @@
     nixos-wsl.inputs.nixpkgs.follows = "nixpkgs";
 
     nixd.url = "github:nix-community/nixd";
+
+    eza.url = "github:eza-community/eza";
   };
 
-  outputs = inputs@{ nixpkgs, nixpkgs-old, sops-nix, darwin, home-manager, nixos-wsl, nixd, ... }:
+  outputs = inputs@{ nixpkgs, nixpkgs-old, sops-nix, darwin, home-manager, nixos-wsl, nixd, eza, ... }:
     let
       inherit (nixpkgs-old.lib) nixosSystem;
       inherit (darwin.lib) darwinSystem;
@@ -80,11 +82,12 @@
 
       darwinConfigurations =
         let
-          nixdOverlay = ({ config, pkgs, lib, ... }:
+          overlay = ({ config, pkgs, lib, ... }:
             {
               nixpkgs.overlays = [
                 (final: prev: {
                   nixd = nixd.packages."aarch64-darwin".nixd;
+                  eza = eza.packages."aarch64-darwin".default;
                 })
               ];
             });
@@ -95,7 +98,7 @@
             modules = [
               ./machines/macbook-pro/configuration.nix
               home-manager.darwinModules.home-manager
-              nixdOverlay
+              overlay
             ];
         };
       };

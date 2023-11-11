@@ -75,7 +75,7 @@
     bash = {
       enable = true;
       shellAliases = {
-        ll = "eza -alh --group-directories-first --color=auto";
+        ll = "eza -1alh --group-directories-first --color=auto";
       };
     };
 

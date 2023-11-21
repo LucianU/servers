@@ -537,17 +537,17 @@
         ]
       },
       "locked": {
-        "lastModified": 1687269139,
-        "narHash": "sha256-nWuXf3EzfqtQIjb1v2Pzn5c/GK2OvMn0JpfbDqjjlCg=",
+        "lastModified": 1687270451,
+        "narHash": "sha256-p+gpEPOPc3rZTGc7YcTUfwOoNAwrSTugHJzvZMVDk5M=",
         "ref": "refs/heads/main",
-        "rev": "49fc4f806ebcd7e4aa03c95baf2aa0a2af7d7c53",
-        "revCount": 9,
+        "rev": "d9458ba7a6c8a59b84d0eb7f26344e245e1ede42",
+        "revCount": 10,
         "type": "git",
-        "url": "file:///Users/lucian/code/web/wikis"
+        "url": "file:///Users/lucian/code/wikis"
       },
       "original": {
         "type": "git",
-        "url": "file:///Users/lucian/code/web/wikis"
+        "url": "file:///Users/lucian/code/wikis"
       }
     }
   },

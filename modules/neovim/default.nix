@@ -2,7 +2,7 @@
 
 {
   imports = [
-    ./plugins/copilot-vim
+    #./plugins/copilot-vim
   ];
 
   programs = {

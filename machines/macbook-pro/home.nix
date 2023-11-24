@@ -25,6 +25,7 @@
       restic
       wireguard-tools
       eza
+      transmission
 
       nixd
 

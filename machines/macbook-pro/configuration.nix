@@ -51,8 +51,7 @@
   # $ darwin-rebuild switch -I darwin-config=<path/to/configuration.nix>
   environment.darwinConfig = "$HOME/.config/nixpkgs/configuration.nix";
   environment.systemPackages =
-    [ pkgs.kitty
-      pkgs.vim
+    [ pkgs.vim
     ];
 
   # Used for backwards compatibility, please read the changelog before changing.

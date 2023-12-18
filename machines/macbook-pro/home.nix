@@ -26,8 +26,6 @@
       wireguard-tools
       transmission
 
-      nixd
-
       # Haskell tooling
       haskell-language-server
 

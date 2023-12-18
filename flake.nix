@@ -23,11 +23,9 @@
     nixos-wsl.inputs.nixpkgs.follows = "nixpkgs";
 
     nixd.url = "github:nix-community/nixd";
-
-    eza.url = "github:eza-community/eza";
   };
 
-  outputs = inputs@{ nixpkgs, nixpkgs-old, sops-nix, darwin, home-manager, nixos-wsl, nixd, eza, ... }:
+  outputs = inputs@{ nixpkgs, nixpkgs-old, sops-nix, darwin, home-manager, nixos-wsl, nixd, ... }:
     let
       inherit (nixpkgs-old.lib) nixosSystem;
       inherit (darwin.lib) darwinSystem;
@@ -87,7 +85,6 @@
               nixpkgs.overlays = [
                 (final: prev: {
                   nixd = nixd.packages."aarch64-darwin".nixd;
-                  eza = eza.packages."aarch64-darwin".default;
                 })
               ];
             });

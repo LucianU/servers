@@ -24,7 +24,6 @@
       bat
       restic
       wireguard-tools
-      eza
       transmission
 
       nixd
@@ -76,7 +75,6 @@
     bash = {
       enable = true;
       shellAliases = {
-        ll = "eza -1alh --group-directories-first --color=auto";
       };
     };
 

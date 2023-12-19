@@ -8,10 +8,8 @@
     sops-nix.inputs.nixpkgs.follows = "nixpkgs-old";
 
     tiddlywiki.url = "github:LucianU/nix-tiddlywiki";
-    tiddlywiki.inputs.nixpkgs.follows = "nixpkgs-old";
 
     wikis.url = "/Users/lucian/code/wikis";
-    wikis.inputs.nixpkgs.follows = "nixpkgs-old";
 
     darwin.url = "github:lnl7/nix-darwin/master";
     darwin.inputs.nixpkgs.follows = "nixpkgs";

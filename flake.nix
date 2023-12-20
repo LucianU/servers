@@ -1,27 +1,27 @@
 {
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/23.05";
+    nixpkgs-2305.url = "github:NixOS/nixpkgs/23.05";
 
-    nixpkgs-old.url = "github:NixOS/nixpkgs/22.11";
+    nixpkgs-2211.url = "github:NixOS/nixpkgs/22.11";
 
     sops-nix.url = "github:Mic92/sops-nix";
-    sops-nix.inputs.nixpkgs.follows = "nixpkgs-old";
+    sops-nix.inputs.nixpkgs.follows = "nixpkgs-2211";
 
     tiddlywiki.url = "github:LucianU/nix-tiddlywiki";
 
     wikis.url = "/Users/lucian/code/wikis";
 
     darwin.url = "github:lnl7/nix-darwin/master";
-    darwin.inputs.nixpkgs.follows = "nixpkgs";
+    darwin.inputs.nixpkgs.follows = "nixpkgs-2305";
 
     home-manager.url = "github:nix-community/home-manager/release-23.05";
 
     nixos-wsl.url = "github:nix-community/nixos-wsl";
   };
 
-  outputs = inputs@{ nixpkgs, nixpkgs-old, sops-nix, darwin, home-manager, nixos-wsl, ... }:
+  outputs = inputs@{ nixpkgs-2305, nixpkgs-2211, sops-nix, darwin, home-manager, nixos-wsl, ... }:
     let
-      inherit (nixpkgs-old.lib) nixosSystem;
+      inherit (nixpkgs-2211.lib) nixosSystem;
       inherit (darwin.lib) darwinSystem;
     in
     {

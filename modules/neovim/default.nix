@@ -14,15 +14,15 @@
       plugins = with pkgs.vimPlugins; [
         editorconfig-nvim
 
-        vim-nix
         direnv-vim
 
         vim-terraform
         vim-terraform-completion
 
         nvim-treesitter
-        nvim-treesitter-parsers.haskell
+
         nvim-treesitter-parsers.nix
+        vim-nix
 
         nvim-tree-lua
         bufferline-nvim
@@ -33,7 +33,9 @@
 
         plenary-nvim
         telescope-nvim
+
         haskell-tools-nvim
+        nvim-treesitter-parsers.haskell
 
         # theme
         solarized

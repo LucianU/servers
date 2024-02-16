@@ -73,7 +73,7 @@
     bash = {
       enable = true;
       shellAliases = {
-        ll = "ls -l";
+        ll = "ls -al";
       };
     };
 

@@ -29,6 +29,11 @@
       };
     in
     {
+
+      overlays.default = final: prev: {
+        inherit eza;
+      };
+
       nixosConfigurations = {
         "hetzner-main" = nixosSystem {
           system = "x86_64-linux";
@@ -74,10 +79,6 @@
           ];
           specialArgs = { inherit inputs; };
         };
-      };
-
-      overlays.default = final: prev: {
-        inherit eza;
       };
 
       darwinConfigurations =

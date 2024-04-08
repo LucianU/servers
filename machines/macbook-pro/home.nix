@@ -25,6 +25,7 @@
       restic
       wireguard-tools
       transmission
+      eza
 
       # Haskell tooling
       haskell-language-server
@@ -73,7 +74,7 @@
     bash = {
       enable = true;
       shellAliases = {
-        ll = "ls -al";
+        ll = "eza -a1l --color=always";
       };
     };
 

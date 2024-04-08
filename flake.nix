@@ -17,12 +17,16 @@
     home-manager.url = "github:nix-community/home-manager/release-23.05";
 
     nixos-wsl.url = "github:nix-community/nixos-wsl";
+    eza.url = "github:eza-community/eza";
   };
 
-  outputs = inputs@{ nixpkgs-2305, nixpkgs-2211, sops-nix, darwin, home-manager, nixos-wsl, ... }:
+  outputs = inputs@{ self, nixpkgs-2305, nixpkgs-2211, sops-nix, darwin, home-manager, nixos-wsl, eza, ... }:
     let
       inherit (nixpkgs-2211.lib) nixosSystem;
       inherit (darwin.lib) darwinSystem;
+      nixpkgsConfig = {
+        overlays = [ self.overlays.default ];
+      };
     in
     {
       nixosConfigurations = {
@@ -72,6 +76,10 @@
         };
       };
 
+      overlays.default = final: prev: {
+        inherit eza;
+      };
+
       darwinConfigurations =
         {
           "Lucians-MacBook-Pro" = darwinSystem {
@@ -79,6 +87,7 @@
             modules = [
               ./machines/macbook-pro/configuration.nix
               home-manager.darwinModules.home-manager
+              { nixpkgs = nixpkgsConfig; }
             ];
         };
       };

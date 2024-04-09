@@ -1,11 +1,13 @@
 {
   inputs = {
+    nixpkgs.url = "github:NixOS/nixpkgs/23.11";
     nixpkgs-2305.url = "github:NixOS/nixpkgs/23.05";
-
     nixpkgs-2211.url = "github:NixOS/nixpkgs/22.11";
 
     sops-nix.url = "github:Mic92/sops-nix";
     sops-nix.inputs.nixpkgs.follows = "nixpkgs-2211";
+    flake-parts.url = "github:hercules-ci/flake-parts";
+    treefmt-nix.url = "github:numtide/treefmt-nix";
 
     tiddlywiki.url = "github:LucianU/nix-tiddlywiki";
 
@@ -20,7 +22,19 @@
     eza.url = "github:eza-community/eza";
   };
 
-  outputs = inputs@{ self, nixpkgs-2305, nixpkgs-2211, sops-nix, darwin, home-manager, nixos-wsl, eza, ... }:
+  outputs = inputs@{
+    self,
+    nixpkgs-2305,
+    nixpkgs-2211,
+    sops-nix,
+    flake-parts,
+    treefmt-nix,
+    eza,
+    darwin,
+    home-manager,
+    nixos-wsl,
+    ...
+    }:
     let
       inherit (nixpkgs-2211.lib) nixosSystem;
       inherit (darwin.lib) darwinSystem;
@@ -28,61 +42,88 @@
         overlays = [ self.overlays.default ];
       };
     in
-    {
+    flake-parts.lib.mkFlake { inherit inputs; } {
 
-      overlays.default = final: prev: {
-        inherit eza;
+      systems = [
+          "aarch64-darwin"
+          "x86_64-darwin"
+          "x86_64-linux"
+          "aarch64-linux"
+      ];
+
+      perSystem = { config, self', inputs', pkgs, system, ... }: {
+        devShells = {
+          default = pkgs.mkShell {
+            name = "systems";
+            packages = with pkgs; [
+              xonsh
+            ];
+          };
+        };
+
+        formatter =
+          treefmt-nix.lib.mkWrapper
+            pkgs
+            {
+              projectRootFile = "flake.nix";
+              programs.nixpkgs-fmt.enable = true;
+              programs.black.enable = true;
+            };
       };
 
-      nixosConfigurations = {
-        "hetzner-main" = nixosSystem {
-          system = "x86_64-linux";
-          modules = [
-            ./machines/hetzner-main/configuration.nix
-            sops-nix.nixosModules.sops
-          ];
-          specialArgs = { inherit inputs; };
+      flake = {
+        overlays.default = final: prev: {
+          inherit eza;
         };
 
-        "oci-main" = nixosSystem {
-          system = "x86_64-linux";
-          modules = [
-            ./machines/oci-main/configuration.nix
-            sops-nix.nixosModules.sops
-          ];
-          specialArgs = { inherit inputs; };
+        nixosConfigurations = {
+          "hetzner-main" = nixosSystem {
+            system = "x86_64-linux";
+            modules = [
+              ./machines/hetzner-main/configuration.nix
+              sops-nix.nixosModules.sops
+            ];
+            specialArgs = { inherit inputs; };
+          };
+
+          "oci-main" = nixosSystem {
+            system = "x86_64-linux";
+            modules = [
+              ./machines/oci-main/configuration.nix
+              sops-nix.nixosModules.sops
+            ];
+            specialArgs = { inherit inputs; };
+          };
+
+          "oci-snd" = nixosSystem {
+            system = "x86_64-linux";
+            modules = [
+              ./machines/oci-snd/configuration.nix
+              sops-nix.nixosModules.sops
+            ];
+            specialArgs = { inherit inputs; };
+          };
+
+          "oci-arm-main" = nixosSystem {
+            system = "aarch64-linux";
+            modules = [
+              ./machines/oci-arm-main/configuration.nix
+              sops-nix.nixosModules.sops
+            ];
+            specialArgs = { inherit inputs; };
+          };
+
+          "asus-rog" = nixosSystem {
+            system = "x86_64-linux";
+            modules = [
+              ./machines/asus-rog/configuration.nix
+              nixos-wsl.nixosModules.wsl
+            ];
+            specialArgs = { inherit inputs; };
+          };
         };
 
-        "oci-snd" = nixosSystem {
-          system = "x86_64-linux";
-          modules = [
-            ./machines/oci-snd/configuration.nix
-            sops-nix.nixosModules.sops
-          ];
-          specialArgs = { inherit inputs; };
-        };
-
-        "oci-arm-main" = nixosSystem {
-          system = "aarch64-linux";
-          modules = [
-            ./machines/oci-arm-main/configuration.nix
-            sops-nix.nixosModules.sops
-          ];
-          specialArgs = { inherit inputs; };
-        };
-
-        "asus-rog" = nixosSystem {
-          system = "x86_64-linux";
-          modules = [
-            ./machines/asus-rog/configuration.nix
-            nixos-wsl.nixosModules.wsl
-          ];
-          specialArgs = { inherit inputs; };
-        };
-      };
-
-      darwinConfigurations =
-        {
+        darwinConfigurations = {
           "Lucians-MacBook-Pro" = darwinSystem {
             system = "aarch64-darwin";
             modules = [
@@ -90,6 +131,7 @@
               home-manager.darwinModules.home-manager
               { nixpkgs = nixpkgsConfig; }
             ];
+          };
         };
       };
     };

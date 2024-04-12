@@ -29,6 +29,7 @@
       nil
 
       # Haskell tooling
+      ghc
       haskell-language-server
 
       haskellPackages.fast-tags

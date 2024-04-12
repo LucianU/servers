@@ -4,22 +4,23 @@
     nixpkgs-2305.url = "github:NixOS/nixpkgs/23.05";
     nixpkgs-2211.url = "github:NixOS/nixpkgs/22.11";
 
+    darwin.url = "github:lnl7/nix-darwin/master";
+    darwin.inputs.nixpkgs.follows = "nixpkgs-2305";
+
+    home-manager.url = "github:nix-community/home-manager/release-23.05";
+    nixos-wsl.url = "github:nix-community/nixos-wsl";
+
     sops-nix.url = "github:Mic92/sops-nix";
     sops-nix.inputs.nixpkgs.follows = "nixpkgs-2211";
+
     flake-parts.url = "github:hercules-ci/flake-parts";
     treefmt-nix.url = "github:numtide/treefmt-nix";
+    eza.url = "github:eza-community/eza";
 
     tiddlywiki.url = "github:LucianU/nix-tiddlywiki";
 
     wikis.url = "/Users/lucian/code/wikis";
 
-    darwin.url = "github:lnl7/nix-darwin/master";
-    darwin.inputs.nixpkgs.follows = "nixpkgs-2305";
-
-    home-manager.url = "github:nix-community/home-manager/release-23.05";
-
-    nixos-wsl.url = "github:nix-community/nixos-wsl";
-    eza.url = "github:eza-community/eza";
   };
 
   outputs = inputs@{

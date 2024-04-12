@@ -1,14 +1,16 @@
 {
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/23.11";
-    nixpkgs-2305.url = "github:NixOS/nixpkgs/23.05";
     nixpkgs-2211.url = "github:NixOS/nixpkgs/22.11";
 
     darwin.url = "github:lnl7/nix-darwin/master";
-    darwin.inputs.nixpkgs.follows = "nixpkgs-2305";
+    darwin.inputs.nixpkgs.follows = "nixpkgs";
 
-    home-manager.url = "github:nix-community/home-manager/release-23.05";
+    home-manager.url = "github:nix-community/home-manager/release-23.11";
+    home-manager.inputs.nixpkgs.follows = "nixpkgs";
+
     nixos-wsl.url = "github:nix-community/nixos-wsl";
+    nixos-wsl.inputs.nixpkgs.follows = "nixpkgs";
 
     sops-nix.url = "github:Mic92/sops-nix";
     sops-nix.inputs.nixpkgs.follows = "nixpkgs-2211";
@@ -25,7 +27,6 @@
 
   outputs = inputs@{
     self,
-    nixpkgs-2305,
     nixpkgs-2211,
     sops-nix,
     flake-parts,

@@ -26,6 +26,7 @@
       wireguard-tools
       transmission
       eza
+      nil
 
       # Haskell tooling
       haskell-language-server

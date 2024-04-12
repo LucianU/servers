@@ -57,7 +57,11 @@
           default = pkgs.mkShell {
             name = "systems";
             packages = with pkgs; [
-              xonsh
+              (ghc.withPackages (p: with p; [
+                optparse-applicative
+                optparse-simple
+                turtle
+              ]))
             ];
           };
         };

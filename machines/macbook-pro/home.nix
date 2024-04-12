@@ -38,7 +38,6 @@
 
       colima # Docker runtime
       docker
-      vagrant
       terraform
 
       # deployment

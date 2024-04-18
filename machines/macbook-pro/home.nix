@@ -1,5 +1,7 @@
 { config, pkgs, lib, ... }:
-
+let
+  homeDir = config.home.homeDirectory;
+in
 {
   imports = [
     ../../modules/neovim
@@ -55,7 +57,7 @@
       HOMEBREW_PREFIX = "/opt/homebrew";
       HOMEBREW_CELLAR = "/opt/homebrew/Cellar";
       HOMEBREW_REPOSITORY = "/opt/homebrew";
-      SOPS_AGE_KEY_FILE = "${config.home.homeDirectory}/.config/sops/age/keys.txt";
+      SOPS_AGE_KEY_FILE = "${homeDir}/.config/sops/age/keys.txt";
     };
     sessionPath = [
       "/etc/profiles/per-user/lucian/bin"
@@ -69,7 +71,7 @@
   programs = {
     home-manager = {
       enable = true;
-      path = "${config.home.homeDirectory}/.config/nixpkgs/home.nix";
+      path = "${homeDir}/.config/nixpkgs/home.nix";
     };
 
     bash = {
@@ -108,8 +110,11 @@
         init = {
           defaultBranch = "main";
         };
+        core.excludesFile = "${homeDir}/.config/git/ignore";
         pull.rebase = false;
       };
+
+      ignores =  [ ];
     };
 
     starship = {

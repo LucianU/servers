@@ -39,7 +39,7 @@
         # theme
         solarized
       ];
-      extraConfig = "lua << EOF\n" + builtins.readFile ./neovim-settings.lua + "\nEOF";
+      extraConfig = "lua << EOF\n" + builtins.readFile ./init.lua + "\nEOF";
     };
   };
 }

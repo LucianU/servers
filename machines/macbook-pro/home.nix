@@ -78,6 +78,7 @@ in
       enable = true;
       shellAliases = {
         ll = "eza -a1l --color=always";
+        neovim = "/opt/homebrew/bin/nvim -u ~/.config/neovim/init.lua";
       };
     };
 

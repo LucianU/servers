@@ -36,6 +36,7 @@ vim.cmd("autocmd FileType gitcommit set colorcolumn=73")
 vim.cmd("autocmd FileType gitcommit set textwidth=72")
 
 
+-- strip trailing whitespace for all files before writing
 function vim.fn.stripTrailingWhitespace()
   local l = vim.fn.line(".")
   local c = vim.fn.col(".")
@@ -43,9 +44,8 @@ function vim.fn.stripTrailingWhitespace()
   vim.fn.cursor(l, c)
 end
 
--- strip all files by default
 vim.cmd("autocmd BufWritePre * :lua vim.fn.stripTrailingWhitespace()")
-
+-- end strip
 
 
 -- Plugin Management (when used outside Nix)

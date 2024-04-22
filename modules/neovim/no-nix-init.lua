@@ -62,9 +62,6 @@ Plug 'gfanto/fzf-lsp.nvim'              -- Search for Symbols
 
 -- Semantic highlighting
 Plug 'nvim-treesitter/nvim-treesitter'
-Plug 'tree-sitter/tree-sitter-python'
-Plug 'tree-sitter/tree-sitter-haskell'
-Plug 'nix-community/tree-sitter-nix'
 
 -- Language Server
 Plug 'neovim/nvim-lspconfig'

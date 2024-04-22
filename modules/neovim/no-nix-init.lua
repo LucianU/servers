@@ -47,7 +47,6 @@ end
 vim.cmd("autocmd BufWritePre * :lua vim.fn.stripTrailingWhitespace()")
 
 
-vim.cmd("colorscheme solarized")
 
 -- Plugin Management (when used outside Nix)
 local vim = vim
@@ -55,6 +54,7 @@ local Plug = vim.fn['plug#']
 
 vim.call('plug#begin', '~/.vim/plugged')
 
+Plug 'maxmx03/solarized.nvim'
 Plug 'itchyny/lightline.vim'             -- Status line
 Plug 'junegunn/fzf'                      -- Fuzzy finder
 Plug 'junegunn/fzf.vim'                 -- FZF integration
@@ -81,6 +81,9 @@ Plug 'hrsh7th/vim-vsnip'
 
 vim.call('plug#end')
 -- END Plugin Management
+
+-- Color scheme
+vim.cmd("colorscheme solarized")
 
 -- Setup nvim-treesitter
 vim.opt.runtimepath:append("~/.local/share/nvim/site/tree-sitter-parsers")
@@ -181,6 +184,7 @@ require('lspconfig').nil_ls.setup{
   capabilities = capabilities
 }
 
+-- Enable Haskell Language Server
 require('lspconfig').hls.setup{
   filetypes = { 'haskell', 'lhaskell', 'cabal' },
   capabilities = capabilities

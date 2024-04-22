@@ -83,14 +83,12 @@ vim.call('plug#end')
 vim.cmd("colorscheme solarized")
 
 -- Setup nvim-treesitter
-vim.opt.runtimepath:append("~/.local/share/nvim/site/tree-sitter-parsers")
-
 require('nvim-treesitter.configs').setup {
-  ensure_installed = { "c", "lua", "vim", "vimdoc", "query",
+  ensure_installed = {
+    "c", "lua", "vim", "vimdoc", "query",
     "python", "haskell", "nix", "typescript"
   },
   auto_install = true,
-  parser_install_dir = "~/.local/share/nvim/site/tree-sitter-parsers",
   highlight = {
     enable = true,
     additional_vim_regex_highlighting = false,

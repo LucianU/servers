@@ -30,6 +30,9 @@ in
       eza
       nil
 
+      # TypeScript tooling
+      nodePackages_latest.typescript-language-server
+
       # Haskell tooling
       ghc
       haskell-language-server

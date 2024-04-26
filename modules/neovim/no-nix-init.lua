@@ -174,6 +174,11 @@ require('lspconfig').ruff_lsp.setup{
   capabilities = capabilities
 }
 
+-- Enable TypeScript Language Server
+require('lspconfig').tsserver.setup{
+  capabilities = capabilities
+}
+
 -- Enable Nix Language Server
 require('lspconfig').nil_ls.setup{
   capabilities = capabilities

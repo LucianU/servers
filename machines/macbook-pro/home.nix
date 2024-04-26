@@ -18,7 +18,6 @@ in
       curl
       wget
       jq
-      cachix
       git
       fd
       ripgrep
@@ -28,7 +27,6 @@ in
       wireguard-tools
       transmission
       eza
-      nil
 
       # TypeScript tooling
       nodePackages_latest.typescript-language-server
@@ -42,12 +40,16 @@ in
       haskellPackages.haskell-debug-adapter
       haskellPackages.ghci-dap
 
-      colima # Docker runtime
+      # Docker
+      colima
       docker
+
       terraform
 
-      # deployment
+      # Nix tooling
+      nil
       nixos-rebuild
+      cachix
 
       # secrets
       age

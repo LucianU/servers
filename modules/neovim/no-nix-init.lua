@@ -116,11 +116,6 @@ require('nvim-treesitter.configs').setup {
   },
 }
 
--- folding
---vim.opt.foldmethod = 'expr'
---vim.opt.foldexpr = 'nvim_treesitter#foldexpr()'
---vim.opt.nofoldenable = true -- This option causes an error. I might need a newer version of neovim
-
 -- END Setup nvim-treesitter
 
 -- Setup nvim-cmp
@@ -162,7 +157,7 @@ cmp.setup({
   }),
   sources = cmp.config.sources({
     { name = 'nvim_lsp' },
-    { name = 'vsnip' }, -- For vsnip users.
+    { name = 'vsnip' },
   }, {
     { name = 'buffer' },
   })
@@ -207,5 +202,4 @@ require('lspconfig').hls.setup{
   filetypes = { 'haskell', 'lhaskell', 'cabal' },
   capabilities = capabilities
 }
--- exit Terminal Mode with Escape
-vim.cmd("tnoremap <Esc> <C-\\><C-n>")
+

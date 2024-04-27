@@ -24,6 +24,15 @@ vim.opt.colorcolumn = "101"
 vim.opt.textwidth = 100
 vim.opt.wrap = true
 
+-- Suggested by nvim-tree
+-- disable netrw. I don't know why, but I'm doing it
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+
+-- optionally enable 24-bit colour
+-- I'm curious what this does
+vim.opt.termguicolors = true
+
 
 vim.cmd("autocmd FileType lua set shiftwidth=2")
 
@@ -60,6 +69,12 @@ Plug 'junegunn/fzf'                      -- Fuzzy finder
 Plug 'junegunn/fzf.vim'                 -- FZF integration
 Plug 'gfanto/fzf-lsp.nvim'              -- Search for Symbols
 
+-- File browser
+Plug 'nvim-tree/nvim-tree.lua'
+-- TODO: Icons are not displayed, even though I installed this plugin
+-- There may be something wrong with my font. Need to investigate
+Plug 'nvim-tree/nvim-web-devicons'
+
 -- Semantic highlighting
 Plug 'nvim-treesitter/nvim-treesitter'
 
@@ -81,6 +96,9 @@ vim.call('plug#end')
 
 -- Color scheme
 vim.cmd("colorscheme solarized")
+
+-- Setup nvim-tree
+require('nvim-tree').setup()
 
 -- Setup nvim-treesitter
 require('nvim-treesitter.configs').setup {

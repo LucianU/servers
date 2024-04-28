@@ -82,7 +82,7 @@ in
     bash = {
       enable = true;
       shellAliases = {
-        ll = "eza -a1l --color=always";
+        ll = "eza -a1l --color=always -I *.DS_Store";
         neovim = "/opt/homebrew/bin/nvim -u ~/.config/neovim/init.lua";
       };
     };
@@ -120,7 +120,9 @@ in
         pull.rebase = false;
       };
 
-      ignores =  [ ];
+      ignores =  [
+        ".DS_Store"
+      ];
     };
 
     starship = {

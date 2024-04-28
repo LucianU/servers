@@ -75,6 +75,9 @@ Plug 'nvim-tree/nvim-tree.lua'
 -- There may be something wrong with my font. Need to investigate
 Plug 'nvim-tree/nvim-web-devicons'
 
+-- Buffers
+Plug 'akinsho/bufferline.nvim'
+
 -- Semantic highlighting
 Plug 'nvim-treesitter/nvim-treesitter'
 
@@ -96,6 +99,9 @@ vim.call('plug#end')
 
 -- Color scheme
 vim.cmd("colorscheme solarized")
+
+-- Setup bufferline
+require("bufferline").setup{}
 
 -- Setup nvim-tree
 require('nvim-tree').setup()

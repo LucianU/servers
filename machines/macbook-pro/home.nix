@@ -81,7 +81,6 @@ in
   programs = {
     home-manager = {
       enable = true;
-      path = "${homeDir}/.config/nixpkgs/home.nix";
     };
 
     bash = {

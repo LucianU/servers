@@ -27,7 +27,6 @@ in
       wireguard-tools
       transmission
       eza
-      terraform
 
       # Nix tooling
       nil

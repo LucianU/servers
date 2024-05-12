@@ -209,3 +209,8 @@ require('lspconfig').hls.setup{
   capabilities = capabilities
 }
 
+-- Enable Elm Language Server
+require('lspconfig').elmls.setup{
+  capabilities = capabilities
+}
+

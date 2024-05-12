@@ -40,6 +40,12 @@ in
       haskellPackages.haskell-debug-adapter
       haskellPackages.ghci-dap
 
+      # Elm tooling
+      elmPackages.elm
+      elmPackages.elm-format
+      elmPackages.elm-test
+      elmPackages.elm-language-server
+
       # Docker
       colima
       docker

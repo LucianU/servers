@@ -27,6 +27,12 @@ in
       wireguard-tools
       transmission
       eza
+      terraform
+
+      # Nix tooling
+      nil
+      nixos-rebuild
+      cachix
 
       # TypeScript tooling
       nodePackages_latest.typescript-language-server
@@ -49,13 +55,6 @@ in
       # Docker
       colima
       docker
-
-      terraform
-
-      # Nix tooling
-      nil
-      nixos-rebuild
-      cachix
 
       # secrets
       age

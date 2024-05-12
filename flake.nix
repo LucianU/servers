@@ -56,7 +56,7 @@
       perSystem = { config, self', inputs', pkgs, system, ... }: {
         devShells = {
           default = pkgs.mkShell {
-            name = "systems";
+            name = "servers";
             packages = with pkgs; [
               (ghc.withPackages (p: with p; [
                 optparse-applicative

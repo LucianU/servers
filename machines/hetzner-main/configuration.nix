@@ -140,24 +140,6 @@
       read_access = "(anon)";
       write_access = "(authenticated)";
     };
-
-    tw-sim = {
-      enable = true;
-      port = 8084;
-      domainName = "sim.elbear.com";
-
-      backup = {
-        backend = {
-          url = "s3:fra1.digitaloceanspaces.com/sim-elbear-com";
-          credentialsFile = config.sops.secrets.digitalocean_spaces_credentials.path;
-        };
-        passwordFile = config.sops.secrets.tw_sim_restic_pass.path;
-      };
-
-      users = config.sops.secrets.tw_sim_users.path;
-      read_access = "(authenticated)";
-      write_access = "(authenticated)";
-    };
   };
 
   nixpkgs.system = "x86_64-linux";

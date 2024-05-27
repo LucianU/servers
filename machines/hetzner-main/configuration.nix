@@ -62,6 +62,7 @@
       tw_prod_users = {};
       tw_sim_users = {};
       digitalocean_spaces_credentials = {};
+      cloudflare_r2_credentials = {};
     };
   };
 

@@ -1,7 +1,5 @@
 { service-name, service-description, tiddlywiki-pkg, cfg, lib, pkgs }:
 
-with lib;
-
 let
   service_config =
     let
@@ -36,7 +34,6 @@ let
       '';
 
       tiddlywiki = "${tiddlywiki-pkg}/tiddlywiki.js";
-      #tiddlywiki = "${pkgs.nodePackages.tiddlywiki}/lib/node_modules/.bin/tiddlywiki";
       port = "port=${toString cfg.port}";
       credentials = "credentials=${cfg.users}";
       readers = "readers=${cfg.read_access}";

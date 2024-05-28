@@ -12,7 +12,7 @@
   nix.distributedBuilds = true;
 
   nix.buildMachines = [
-    { hostName = "hetzner-main";
+    { hostName = "oci-main";
       system = "x86_64-linux";
       maxJobs = 100;
       supportedFeatures = [ "benchmark" "big-parallel" "kvm" "nixos-test" ];

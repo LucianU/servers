@@ -73,8 +73,8 @@
 
       backup = {
         backend = {
-          url = "s3:fra1.digitaloceanspaces.com/know-elbear-com";
-          credentialsFile = config.sops.secrets.digitalocean_spaces_credentials.path;
+          url = "s3:9997ad20d4c639d7d9b6e7293936ee5b.r2.cloudflarestorage.com/know-elbear-com";
+          credentialsFile = config.sops.secrets.cloudflare_r2_credentials.path;
         };
         passwordFile = config.sops.secrets.tw_knowledge_store_restic_pass.path;
       };
@@ -91,8 +91,8 @@
 
       backup = {
         backend = {
-          url = "s3:fra1.digitaloceanspaces.com/haskell-elbear-com";
-          credentialsFile = config.sops.secrets.digitalocean_spaces_credentials.path;
+          url = "s3:9997ad20d4c639d7d9b6e7293936ee5b.r2.cloudflarestorage.com/haskell-elbear-com";
+          credentialsFile = config.sops.secrets.cloudflare_r2_credentials.path;
         };
         passwordFile = config.sops.secrets.tw_haskell_restic_pass.path;
       };
@@ -109,8 +109,8 @@
 
       backup = {
         backend = {
-          url = "s3:fra1.digitaloceanspaces.com/rust-elbear-com";
-          credentialsFile = config.sops.secrets.digitalocean_spaces_credentials.path;
+          url = "s3:9997ad20d4c639d7d9b6e7293936ee5b.r2.cloudflarestorage.com/rust-elbear-com";
+          credentialsFile = config.sops.secrets.cloudflare_r2_credentials.path;
         };
         passwordFile = config.sops.secrets.tw_rust_restic_pass.path;
       };

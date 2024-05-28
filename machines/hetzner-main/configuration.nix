@@ -4,7 +4,6 @@
     ../../modules/tw-knowledge-store.nix
     ../../modules/tw-haskell.nix
     ../../modules/tw-rust.nix
-    ../../modules/tw-sim.nix
     ../../modules/tw-publish.nix
   ];
 
@@ -58,9 +57,7 @@
       tw_haskell_restic_pass = {};
       tw_rust_restic_pass = {};
       tw_publish_restic_pass = {};
-      tw_sim_restic_pass = {};
       tw_prod_users = {};
-      tw_sim_users = {};
       digitalocean_spaces_credentials = {};
       cloudflare_r2_credentials = {};
     };

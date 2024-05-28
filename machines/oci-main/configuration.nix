@@ -6,7 +6,6 @@
     ../../modules/tw-haskell.nix
     ../../modules/tw-rust.nix
     ../../modules/tw-publish.nix
-    ../../modules/tw-sim.nix
   ];
 
   boot.cleanTmpDir = true;
@@ -39,7 +38,6 @@
       tw_knowledge_store_restic_pass = {};
       tw_haskell_restic_pass = {};
       tw_rust_restic_pass = {};
-      tw_sim_restic_pass = {};
       tw_stage_users = {};
       digitalocean_spaces_credentials = {};
     };
@@ -151,33 +149,6 @@
       read_access = "(anon)";
       write_access = "(authenticated)";
     };
-
-    tw-sim = {
-      enable = true;
-      port = 8083;
-      domainName = "sim.staging.elbear.com";
-
-      backup = {
-        backend = {
-          url = "s3:fra1.digitaloceanspaces.com/stage-elbear-com";
-          credentialsFile = config.sops.secrets.digitalocean_spaces_credentials.path;
-        };
-        passwordFile = config.sops.secrets.tw_stage_restic_pass.path;
-      };
-
-      restore = {
-        backend = {
-          url = "s3:fra1.digitaloceanspaces.com/sim-elbear-com";
-          credentialsFile = config.sops.secrets.digitalocean_spaces_credentials.path;
-        };
-        passwordFile = config.sops.secrets.tw_sim_restic_pass.path;
-      };
-
-      users = config.sops.secrets.tw_stage_users.path;
-      read_access = "(authenticated)";
-      write_access = "(authenticated)";
-    };
-
   };
 
   nixpkgs.system = "x86_64-linux";

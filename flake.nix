@@ -83,15 +83,6 @@
         };
 
         nixosConfigurations = {
-          "hetzner-main" = nixosSystem {
-            system = "x86_64-linux";
-            modules = [
-              ./machines/hetzner-main/configuration.nix
-              sops-nix.nixosModules.sops
-            ];
-            specialArgs = { inherit inputs; };
-          };
-
           "oci-main" = nixosSystem {
             system = "x86_64-linux";
             modules = [

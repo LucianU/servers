@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -e
 
-usage="Usage: $0 {hetzner-main|oci-main|oci-snd|oci-arm-main|mbp}"
+usage="Usage: $0 {oci-main|oci-snd|oci-arm-main|mbp}"
 
 if [ "$#" -ne 1 ]; then
     echo "Error: This script requires exactly one argument."
@@ -10,7 +10,7 @@ if [ "$#" -ne 1 ]; then
 fi
 
 case "$1" in
-    hetzner-main|oci-main|oci-snd|oci-arm-main)
+    oci-main|oci-snd|oci-arm-main)
         export TMPDIR=/tmp # This prevents an error caused by the fact that
                            # the build dir path is too long
 

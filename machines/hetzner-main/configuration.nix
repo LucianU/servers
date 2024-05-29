@@ -1,4 +1,4 @@
-{ config, pkgs, lib, inputs, ... }:
+{ config, ... }:
 {
   imports = [
     ../../modules/tw-knowledge-store.nix
@@ -58,7 +58,6 @@
       tw_rust_restic_pass = {};
       tw_publish_restic_pass = {};
       tw_prod_users = {};
-      digitalocean_spaces_credentials = {};
       cloudflare_r2_credentials = {};
     };
   };

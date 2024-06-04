@@ -44,7 +44,7 @@
     tw-knowledge-store = {
       enable = true;
       port = 8080;
-      domainName = "know.oci.elbear.com";
+      domainName = "know.elbear.com";
 
       backup = {
         backend = {
@@ -62,7 +62,7 @@
     tw-haskell = {
       enable = true;
       port = 8081;
-      domainName = "haskell.oci.elbear.com";
+      domainName = "haskell.elbear.com";
 
       backup = {
         backend = {
@@ -80,7 +80,7 @@
     tw-rust = {
       enable = true;
       port = 8082;
-      domainName = "rust.oci.elbear.com";
+      domainName = "rust.elbear.com";
 
       backup = {
         backend = {
@@ -98,7 +98,7 @@
     tw-publish = {
       enable = true;
       port = 8083;
-      domainName = "publish.oci.elbear.com";
+      domainName = "publish.elbear.com";
 
       backup = {
         backend = {

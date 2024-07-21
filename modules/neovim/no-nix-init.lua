@@ -34,6 +34,8 @@ vim.g.loaded_netrwPlugin = 1
 vim.opt.termguicolors = true
 
 
+vim.cmd("autocmd FileType astro set shiftwidth=2")
+vim.cmd("autocmd FileType html set shiftwidth=2")
 vim.cmd("autocmd FileType lua set shiftwidth=2")
 
 -- Text options

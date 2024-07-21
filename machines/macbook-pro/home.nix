@@ -33,6 +33,9 @@ in
       nixos-rebuild
       cachix
 
+      # JS
+      bun
+
       # TypeScript tooling
       nodePackages_latest.typescript-language-server
 

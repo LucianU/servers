@@ -28,6 +28,9 @@ in
       transmission
       eza
 
+      # Formal Verification
+      alloy6
+
       # Nix tooling
       nil
       nixos-rebuild

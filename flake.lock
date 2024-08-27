@@ -586,17 +586,17 @@
         "nixpkgs": "nixpkgs_5"
       },
       "locked": {
-        "lastModified": 1687270451,
-        "narHash": "sha256-p+gpEPOPc3rZTGc7YcTUfwOoNAwrSTugHJzvZMVDk5M=",
+        "lastModified": 1721975739,
+        "narHash": "sha256-KxE5w5zh5a1WlUtNkBCx/o5SRfQ11hcLwU0xrFAzR4E=",
         "ref": "refs/heads/main",
-        "rev": "d9458ba7a6c8a59b84d0eb7f26344e245e1ede42",
-        "revCount": 10,
+        "rev": "dd5f1b2c6d51028cd346d2f5578b161e3cf6f6fa",
+        "revCount": 11,
         "type": "git",
-        "url": "file:///Users/lucian/code/wikis"
+        "url": "ssh://git@github.com/LucianU/tiddlywiki-instances.git"
       },
       "original": {
         "type": "git",
-        "url": "file:///Users/lucian/code/wikis"
+        "url": "ssh://git@github.com/LucianU/tiddlywiki-instances.git"
       }
     }
   },

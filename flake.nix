@@ -17,9 +17,8 @@
     eza.url = "github:eza-community/eza";
 
     tiddlywiki.url = "github:LucianU/nix-tiddlywiki";
-
-    wikis.url = "/Users/lucian/code/wikis";
-
+    # Private repo
+    wikis.url = "git+ssh://git@github.com/LucianU/tiddlywiki-instances.git";
   };
 
   outputs = inputs@{

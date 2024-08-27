@@ -195,7 +195,7 @@ cmp.setup.cmdline(':', {
 })
 -- END Setup nvim-cmp
 
--- Enable ruff-lsp
+-- Enable Python Language Server | ruff-lsp
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
 require('lspconfig').ruff_lsp.setup{
   capabilities = capabilities
@@ -209,6 +209,16 @@ require('lspconfig').tsserver.setup{
 -- Enable Nix Language Server
 require('lspconfig').nil_ls.setup{
   capabilities = capabilities
+}
+
+-- Enable Nim Language Server
+require('lspconfig').nim_langserver.setup{
+    capabilities = capabilities
+}
+
+-- Enable Zig Language Server
+require('lspconfig').zls.setup{
+    capabilities = capabilities
 }
 
 -- Enable Haskell Language Server

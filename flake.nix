@@ -9,9 +9,6 @@
     home-manager.url = "github:nix-community/home-manager/release-23.11";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
-    nixos-wsl.url = "github:nix-community/nixos-wsl";
-    nixos-wsl.inputs.nixpkgs.follows = "nixpkgs";
-
     sops-nix.url = "github:Mic92/sops-nix";
     sops-nix.inputs.nixpkgs.follows = "nixpkgs-2211";
 
@@ -34,7 +31,6 @@
     eza,
     darwin,
     home-manager,
-    nixos-wsl,
     ...
     }:
     let
@@ -106,15 +102,6 @@
             modules = [
               ./machines/oci-arm-main/configuration.nix
               sops-nix.nixosModules.sops
-            ];
-            specialArgs = { inherit inputs; };
-          };
-
-          "asus-rog" = nixosSystem {
-            system = "x86_64-linux";
-            modules = [
-              ./machines/asus-rog/configuration.nix
-              nixos-wsl.nixosModules.wsl
             ];
             specialArgs = { inherit inputs; };
           };

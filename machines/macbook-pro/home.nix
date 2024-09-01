@@ -42,21 +42,6 @@ in
       # TypeScript tooling
       nodePackages_latest.typescript-language-server
 
-      # Haskell tooling
-      ghc
-      haskell-language-server
-
-      haskellPackages.fast-tags
-      haskellPackages.hoogle
-      haskellPackages.haskell-debug-adapter
-      haskellPackages.ghci-dap
-
-      # Elm tooling
-      elmPackages.elm
-      elmPackages.elm-format
-      elmPackages.elm-test
-      elmPackages.elm-language-server
-
       # Docker
       colima
       docker

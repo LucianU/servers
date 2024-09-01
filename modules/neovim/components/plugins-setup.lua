@@ -6,6 +6,7 @@ require("bufferline").setup{}
 
 -- Setup nvim-tree
 require('nvim-tree').setup{}
+vim.cmd("nnoremap <C-e> :NvimTreeToggle<CR>")
 
 -- Setup nvim-treesitter
 require('nvim-treesitter.configs').setup{

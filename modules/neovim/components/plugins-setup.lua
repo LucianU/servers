@@ -1,3 +1,6 @@
+-- Setup mason
+require("mason").setup()
+
 -- Set color scheme
 vim.cmd("colorscheme solarized")
 
@@ -31,7 +34,7 @@ require('nvim-treesitter.configs').setup{
 -- END Setup nvim-treesitter
 
 -- Setup nvim-cmp
-local cmp = require'cmp'
+local cmp = require('cmp')
 
 local has_words_before = function()
   unpack = unpack or table.unpack

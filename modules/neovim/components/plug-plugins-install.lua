@@ -4,6 +4,9 @@ local Plug = vim.fn['plug#']
 
 vim.call('plug#begin', '~/.vim/plugged')
 
+Plug 'williamboman/mason.nvim'           -- Binary Manager
+Plug 'williamboman/mason-lspconfig.nvim' -- Integration with lspconfig
+
 Plug 'maxmx03/solarized.nvim'            -- Color Scheme
 Plug 'itchyny/lightline.vim'             -- Status line
 

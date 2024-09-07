@@ -28,19 +28,18 @@ in
       transmission
       eza
 
+      # Rust
+      cargo
+
       # Formal Verification
       alloy6
 
       # Nix tooling
-      nil
       nixos-rebuild
       cachix
 
       # JS
       bun
-
-      # TypeScript tooling
-      nodePackages_latest.typescript-language-server
 
       # Docker
       colima

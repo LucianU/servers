@@ -1,5 +1,6 @@
 -- Setup mason
-require("mason").setup()
+require("mason").setup{}
+require("mason-lspconfig").setup{}
 
 -- Set color scheme
 vim.cmd("colorscheme solarized")

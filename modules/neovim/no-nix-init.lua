@@ -45,3 +45,9 @@ require('lspconfig').zls.setup{
     capabilities = capabilities
 }
 -- END Language Servers
+
+-- Project-specific Config
+local project_config = vim.fn.getcwd() .. "/.nvim.lua"
+if vim.fn.filereadable(project_config) then
+  dofile(project_config)
+end

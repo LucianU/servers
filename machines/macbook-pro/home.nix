@@ -28,6 +28,9 @@ in
       transmission
       eza
 
+      # Python
+      poetry
+
       # Rust
       cargo
 

@@ -78,6 +78,7 @@
         };
 
         nixosConfigurations = {
+          # staging for wikis
           "oci-main" = nixosSystem {
             system = "x86_64-linux";
             modules = [
@@ -87,6 +88,7 @@
             specialArgs = { inherit inputs; };
           };
 
+          # production for wikis
           "oci-snd" = nixosSystem {
             system = "x86_64-linux";
             modules = [
@@ -96,6 +98,7 @@
             specialArgs = { inherit inputs; };
           };
 
+          # nothing for now
           "oci-arm-main" = nixosSystem {
             system = "aarch64-linux";
             modules = [

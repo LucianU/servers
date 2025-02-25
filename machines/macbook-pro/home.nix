@@ -66,6 +66,7 @@ in
       "/etc/profiles/per-user/lucian/bin"
       "/run/current-system/sw/bin"
       "/opt/homebrew/bin"
+      "/opt/homebrew/sbin"
     ];
   };
 

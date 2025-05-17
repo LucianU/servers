@@ -10,5 +10,5 @@
 ## Usage
 
 This repo is not designed for general use — it serves as a showcase of my
-NixOps/Nix Flakes setup.
+Nix/NixOS Flakes setup.
 

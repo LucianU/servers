@@ -1,8 +1,12 @@
-# My Cloud Infrastructure
-> ⚠️ This is my personal Nix setup for managing multiple machines using flakes and sops-nix.
-> It is not intended for public contribution but is published as a portfolio of my infrastructure automation skills.
+## Highlights
 
+- Declarative machine configurations using Nix Flakes
+- Secrets encrypted via [sops-nix](https://github.com/Mic92/sops-nix) and Age
+- OCI and CloudFlare support through modular configuration
+- MacBook Pro managed with the same system
 
-# Setup
+## Usage
 
-# Usage
+This repo is not designed for general use — it serves as a showcase of my
+NixOps/Nix Flakes setup.
+

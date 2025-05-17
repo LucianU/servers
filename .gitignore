@@ -1,2 +1,7 @@
 result
 .direnv
+# prevent local secrets or keys from being committed
+*.age.key
+*.dec.*
+*.plaintext.*
+

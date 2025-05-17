@@ -1,21 +1,9 @@
 keys:
   - &user_lucian age127p354uhmd7x24gdkvgtn9y9cczhc9xt7ngvetufyw6h58wmfp7q6aluex
-  - &server_do_nixos_stage age1zj0skqgafz7hsf56eske6ygmdc88e9zl6agcegfhe7vknvudevkqx94jmr
-  - &server_hetzner_main age17n0d7pl65p326rkpgw8sc7sap56ntjsc49racqw83jkjwdkyvsqsa02rrj
   - &server_oci_main age1jjurzcexjrn4q5q682g3jr5pedctkjwr0lq2g4wa9xktrpy77srqt6wh8v
   - &server_oci_snd age1exseaaak6z66g6u4mfwadyejevcz0d7h7ayvxtvq4aekznrf8e9s0c408x
   - &server_oci_arm_main age1wymezv70zqydfsu53t6fvgelpvzr7kdvk2p95fnunakhz0hf7qgsu86t3y
 creation_rules:
-  - path_regex: secrets/do-nixos-stage.yaml$
-    key_groups:
-      - age:
-        - *user_lucian
-        - *server_do_nixos_stage
-  - path_regex: secrets/hetzner-main.yaml$
-    key_groups:
-      - age:
-        - *user_lucian
-        - *server_hetzner_main
   - path_regex: secrets/oci-main.yaml$
     key_groups:
       - age:
@@ -30,5 +18,4 @@ creation_rules:
     key_groups:
       - age:
         - *user_lucian
-        - *server_hetzner_main
 

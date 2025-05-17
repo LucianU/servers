@@ -1,5 +1,7 @@
 ## Highlights
 
+[![Built with Nix](https://img.shields.io/badge/built%20with-nix-5277C3.svg?logo=nixos&logoColor=white)](https://nixos.org)
+
 - Declarative machine configurations using Nix Flakes
 - Secrets encrypted via [sops-nix](https://github.com/Mic92/sops-nix) and Age
 - OCI and CloudFlare support through modular configuration

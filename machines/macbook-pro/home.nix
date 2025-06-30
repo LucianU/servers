@@ -60,7 +60,7 @@ in
       HOMEBREW_PREFIX = "/opt/homebrew";
       HOMEBREW_CELLAR = "/opt/homebrew/Cellar";
       HOMEBREW_REPOSITORY = "/opt/homebrew";
-      HOMEBREW_NO_INSTALL_UPGRADE = 1;
+      HOMEBREW_NO_AUTO_UPDATE = 1;
       SOPS_AGE_KEY_FILE = "${homeDir}/.config/sops/age/keys.txt";
     };
     sessionPath = [

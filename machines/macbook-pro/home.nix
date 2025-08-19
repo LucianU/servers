@@ -28,6 +28,8 @@ in
       transmission
       eza
 
+      s3cmd
+
       # Python
       poetry
 

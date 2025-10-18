@@ -8,7 +8,7 @@ in
   ];
 
   home = {
-    stateVersion = "22.05";
+    stateVersion = "25.05";
 
     username = "lucian";
     homeDirectory = "/Users/lucian";
@@ -24,8 +24,6 @@ in
       colordiff
       bat
       restic
-      wireguard-tools
-      transmission
       eza
 
       s3cmd

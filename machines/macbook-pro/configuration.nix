@@ -7,8 +7,6 @@
     trusted-public-keys = [ "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY=" ];
   };
 
-  nix.configureBuildUsers = true;
-
   nix.distributedBuilds = true;
 
   nix.buildMachines = [
@@ -42,10 +40,7 @@
     users.lucian = import ./home.nix;
   };
 
-  programs.bash.enableCompletion = true;
-
-  # Auto upgrade nix package and the daemon service.
-  services.nix-daemon.enable = true;
+  programs.bash.completion.enable = true;
 
   # Use a custom configuration.nix location.
   # $ darwin-rebuild switch -I darwin-config=<path/to/configuration.nix>

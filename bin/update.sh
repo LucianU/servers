@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -e
 
-usage="Usage: $0 {oci-main|oci-snd|oci-arm-main|mbp}"
+usage="Usage: $0 {oci-main|oci-snd|mbp}"
 
 if [ "$#" -ne 1 ]; then
     echo "Error: This script requires exactly one argument."

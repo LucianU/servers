@@ -97,16 +97,6 @@
             ];
             specialArgs = { inherit inputs; };
           };
-
-          # nothing for now
-          "oci-arm-main" = nixosSystem {
-            system = "aarch64-linux";
-            modules = [
-              ./machines/oci-arm-main/configuration.nix
-              sops-nix.nixosModules.sops
-            ];
-            specialArgs = { inherit inputs; };
-          };
         };
 
         darwinConfigurations = {

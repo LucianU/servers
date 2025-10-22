@@ -4,7 +4,7 @@
 
 - Declarative machine configurations using Nix Flakes
 - Secrets encrypted via [sops-nix](https://github.com/Mic92/sops-nix) and Age
-- OCI and CloudFlare support through modular configuration
+- OCI
 - MacBook Pro managed with the same system
 
 ## Usage

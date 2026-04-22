@@ -64,6 +64,7 @@ in
       SOPS_AGE_KEY_FILE = "${homeDir}/.config/sops/age/keys.txt";
     };
     sessionPath = [
+      "/Users/lucian/.opencode/bin"
       "/etc/profiles/per-user/lucian/bin"
       "/run/current-system/sw/bin"
       "/opt/homebrew/bin"

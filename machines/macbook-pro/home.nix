@@ -84,6 +84,7 @@ in
       enable = true;
       shellAliases = {
         ll = "eza -a1l --color=always -I *.DS_Store";
+        mosh = "mosh --port=60000:60009";
         neovim = "/opt/homebrew/bin/nvim -u ~/.config/neovim/init.lua";
       };
     };

@@ -82,11 +82,15 @@ in
 
     bash = {
       enable = true;
+      enableCompletion = true;
       shellAliases = {
         ll = "eza -a1l --color=always -I *.DS_Store";
-        mosh = "mosh --port=60000:60009";
         neovim = "/opt/homebrew/bin/nvim -u ~/.config/neovim/init.lua";
       };
+      initExtra = ''
+        _comp_load ssh 2>/dev/null || true
+        complete -F _comp_cmd_ssh mosh
+      '';
     };
 
     direnv = {

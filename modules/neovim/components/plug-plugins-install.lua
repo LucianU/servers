@@ -13,6 +13,7 @@ Plug 'itchyny/lightline.vim'             -- Status line
 Plug 'junegunn/fzf'                      -- Fuzzy finder
 Plug 'junegunn/fzf.vim'                  -- FZF integration
 Plug 'gfanto/fzf-lsp.nvim'               -- Search for Symbols
+Plug 'stevearc/aerial.nvim'              -- Code Objects Explorer
 
 -- File browser
 Plug 'nvim-tree/nvim-web-devicons'

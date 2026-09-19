@@ -12,6 +12,9 @@ require("bufferline").setup{}
 require('nvim-tree').setup{}
 vim.cmd("nnoremap <C-e> :NvimTreeToggle<CR>")
 
+require('aerial').setup{}
+vim.keymap.set('n', '<leader>a', '<cmd>AerialToggle!<CR>')
+
 -- Setup nvim-treesitter
 require('nvim-treesitter.configs').setup{
   ensure_installed = {

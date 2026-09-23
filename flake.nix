@@ -3,9 +3,6 @@
     nixpkgs.url = "github:NixOS/nixpkgs/25.05";
     nixpkgs-2211.url = "github:NixOS/nixpkgs/22.11";
 
-    darwin.url = "github:lnl7/nix-darwin/nix-darwin-25.05";
-    darwin.inputs.nixpkgs.follows = "nixpkgs";
-
     home-manager.url = "github:nix-community/home-manager/release-25.05";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
@@ -28,16 +25,11 @@
     flake-parts,
     treefmt-nix,
     eza,
-    darwin,
     home-manager,
     ...
     }:
     let
       inherit (nixpkgs-2211.lib) nixosSystem;
-      inherit (darwin.lib) darwinSystem;
-      nixpkgsConfig = {
-        overlays = [ self.overlays.default ];
-      };
     in
     flake-parts.lib.mkFlake { inherit inputs; } {
 
@@ -49,6 +41,8 @@
       ];
 
       perSystem = { config, self', inputs', pkgs, system, ... }: {
+        packages.home-manager = home-manager.packages.${system}.default;
+
         devShells = {
           default = pkgs.mkShell {
             name = "servers";
@@ -77,6 +71,20 @@
           inherit eza;
         };
 
+        homeConfigurations = {
+          lucian = home-manager.lib.homeManagerConfiguration {
+            pkgs = import inputs.nixpkgs {
+              system = "aarch64-darwin";
+              overlays = [ self.overlays.default ];
+              config = {
+                allowUnfree = true;
+                allowBroken = true;
+              };
+            };
+            modules = [ ./machines/macbook-pro/home.nix ];
+          };
+        };
+
         nixosConfigurations = {
           # staging for wikis
           "oci-main" = nixosSystem {
@@ -99,16 +107,6 @@
           };
         };
 
-        darwinConfigurations = {
-          "Lucians-MacBook-Pro" = darwinSystem {
-            system = "aarch64-darwin";
-            modules = [
-              ./machines/macbook-pro/configuration.nix
-              home-manager.darwinModules.home-manager
-              { nixpkgs = nixpkgsConfig; }
-            ];
-          };
-        };
       };
     };
 }

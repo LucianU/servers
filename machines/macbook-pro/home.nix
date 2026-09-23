@@ -66,14 +66,15 @@ in
     sessionPath = [
       "/Users/lucian/.local/bin"
       "/Users/lucian/.opencode/bin"
-      "/etc/profiles/per-user/lucian/bin"
-      "/run/current-system/sw/bin"
       "/opt/homebrew/bin"
       "/opt/homebrew/sbin"
     ];
   };
 
   nix.enable = true;
+  home.file.".config/nix/nix.conf".text = ''
+    experimental-features = nix-command flakes
+  '';
 
   programs = {
     home-manager = {
@@ -83,6 +84,9 @@ in
     bash = {
       enable = true;
       enableCompletion = true;
+      profileExtra = ''
+        . /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh
+      '';
       shellAliases = {
         ll = "eza -a1l --color=always -I *.DS_Store";
         neovim = "/opt/homebrew/bin/nvim -u ~/.config/neovim/init.lua";

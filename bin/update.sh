@@ -21,7 +21,7 @@ case "$1" in
         ;;
 
     mbp)
-        sudo darwin-rebuild switch --flake .#Lucians-MacBook-Pro
+        home-manager switch --flake .#lucian
         ;;
     *)
         echo "Error: Invalid argument."

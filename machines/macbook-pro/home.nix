@@ -45,7 +45,6 @@ in
       bun
 
       # Docker
-      colima
       docker
 
       # secrets

@@ -28,21 +28,12 @@ in
 
       s3cmd
 
-      # Python
-      poetry
-
       # Rust
       cargo
-
-      # Formal Verification
-      alloy6
 
       # Nix tooling
       nixos-rebuild
       cachix
-
-      # JS
-      bun
 
       # Docker
       docker

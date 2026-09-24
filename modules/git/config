@@ -1,0 +1,20 @@
+[core]
+	excludesFile = ~/.config/git/ignore
+	pager = delta
+
+[delta]
+	line-numbers = true
+	side-by-side = true
+
+[init]
+	defaultBranch = main
+
+[interactive]
+	diffFilter = delta --color-only
+
+[pull]
+	rebase = false
+
+[user]
+	email = lucian.ursu@gmail.com
+	name = Lucian Ursu

@@ -1,0 +1,3 @@
+# Load the shared environment and interactive Bash settings.
+[ -f "$HOME/.profile" ] && . "$HOME/.profile"
+[ -f "$HOME/.bashrc" ] && . "$HOME/.bashrc"

@@ -1,0 +1,53 @@
+settings = {
+  core = {
+    settings_autosave = "no";
+  };
+};
+
+aliases = {
+  ID = "msg nickserv identify";
+};
+
+chatnets = {
+liberachat = {
+  type = "IRC";
+  nick = "elbear";
+  autosendcmd = "";
+
+};
+
+};
+
+servers = (
+{
+  chatnet = "liberachat";
+  address = "irc.libera.chat";
+  port = "6697";
+  use_ssl = "yes";
+  ssl_verify = "yes";
+  autoconnect = "yes";
+
+}
+
+);
+
+channels = (
+{
+  chatnet = "liberachat";
+  name = "haskell";
+  autojoin = "yes";
+}
+,
+{
+  chatnet = "liberachat";
+  name = "nixos";
+  autojoin = "yes";
+}
+,
+{
+  chatnet = "liberachat";
+  name = "python";
+  autojoin = "yes";
+}
+
+);
